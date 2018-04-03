@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="381.0" styleClass="mainFxmlClass" stylesheets="@../style/receitafx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReceitaFXController">
+   <children>
+      <Label layoutX="147.0" layoutY="96.0" text="Insira o valor" />
+      <DatePicker fx:id="dpData" editable="false" layoutX="106.0" layoutY="185.0" prefHeight="26.0" prefWidth="183.0" showWeekNumbers="true" />
+      <TextField fx:id="tfDescricao" layoutX="103.0" layoutY="247.0" prefHeight="26.0" prefWidth="189.0" />
+      <TextField fx:id="tfValor" layoutX="105.0" layoutY="120.0" prefHeight="26.0" prefWidth="183.0" />
+      <Label layoutX="164.0" layoutY="222.0" text="Descrição" />
+      <ChoiceBox fx:id="cbCategoria" layoutX="103.0" layoutY="310.0" prefHeight="26.0" prefWidth="189.0" />
+      <ChoiceBox fx:id="cbConta" layoutX="103.0" layoutY="373.0" prefHeight="26.0" prefWidth="189.0" />
+      <Label layoutX="165.0" layoutY="285.0" text="Categoria" />
+      <Label layoutX="177.0" layoutY="348.0" text="Conta" />
+      <CheckBox fx:id="cbRecebido" layoutX="150.0" layoutY="410.0" mnemonicParsing="false" selected="true" text="Recebido" />
+      <Pane prefHeight="88.0" prefWidth="381.0" styleClass="paneTitulo">
+         <children>
+            <Label layoutX="32.0" layoutY="46.0" styleClass="titulo" text="Nova receita" />
+            <Button layoutX="305.0" layoutY="45.0" mnemonicParsing="false" onAction="#registraReceita" styleClass="btSalvar" text="Salvar" />
+            <Label fx:id="lVoltar" layoutX="14.0" layoutY="-1.0" styleClass="btVoltar" text="← " />
+         </children>
+      </Pane>
+      <Label layoutX="176.0" layoutY="156.0" text="Data" />
+   </children>
+</AnchorPane>

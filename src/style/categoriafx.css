@@ -1,0 +1,31 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color: #ffffff;
+}
+
+.abaDespesa {
+   -fx-background-color: red;
+}
+
+.abaReceita {
+   -fx-background-color: green;
+}
+
+.cabecalhoPane {
+    -fx-background-color:#ffe100;
+    -fx-font-size:19px;
+    -fx-text-fill:#ffffff;
+}
+
+.btVoltar {
+    -fx-font-size:25px;
+    -fx-text-fill:#ffffff;
+}
+.btSalvar {
+    -fx-background-color:#0047b2;
+    -fx-font-size:12px;
+    -fx-text-fill:#ffffff;
+}

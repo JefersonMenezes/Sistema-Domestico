@@ -1,0 +1,29 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-background-color:#ffffff;
+}
+
+.cabecalhoPane {
+    -fx-background-color:#0066ff;
+}
+
+.tituloTela {
+    -fx-font-size:25px;
+    -fx-text-fill:#ffffff;
+}
+
+.btVoltar {
+    -fx-font-size:25px;
+    -fx-text-fill:#ffffff;
+}
+
+.btSalvar {
+    -fx-background-color:#0047b2;
+    -fx-font-size:12px;
+    -fx-text-fill:#ffffff;
+}
+
+

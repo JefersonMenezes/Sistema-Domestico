@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="381.0" styleClass="mainFxmlClass" stylesheets="@../style/despesafx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DespesaFXController">
+   <children>
+      <Label layoutX="139.0" layoutY="96.0" text="Insira o valor" />
+      <DatePicker fx:id="dpData" editable="false" layoutX="103.0" layoutY="176.0" prefHeight="26.0" prefWidth="183.0" />
+      <TextField fx:id="tfDescricao" layoutX="98.0" layoutY="236.0" prefHeight="26.0" prefWidth="189.0" />
+      <TextField fx:id="tfValor" layoutX="102.0" layoutY="122.0" prefHeight="26.0" prefWidth="183.0" />
+      <Label layoutX="162.0" layoutY="212.0" text="Descrição" />
+      <ChoiceBox fx:id="cbCategoria" layoutX="98.0" layoutY="297.0" prefHeight="26.0" prefWidth="189.0" />
+      <ChoiceBox fx:id="cbConta" layoutX="98.0" layoutY="356.0" prefHeight="26.0" prefWidth="189.0" />
+      <Label layoutX="161.0" layoutY="271.0" text="Categoria" />
+      <Label layoutX="173.0" layoutY="333.0" text="Conta" />
+      <CheckBox fx:id="cbPago" layoutX="149.0" layoutY="402.0" mnemonicParsing="false" selected="true" text="Está pago" />
+      <Pane prefHeight="88.0" prefWidth="381.0" styleClass="paneTitulo">
+         <children>
+            <Label layoutX="32.0" layoutY="46.0" styleClass="titulo" text="Nova despesa" />
+            <Button layoutX="305.0" layoutY="45.0" mnemonicParsing="false" onAction="#registraDespesa" styleClass="btSalvar" text="Salvar" />
+            <Label fx:id="lVoltar" layoutX="14.0" layoutY="-1.0" styleClass="btVoltar" text="← " />
+         </children>
+      </Pane>
+      <Label layoutX="173.0" layoutY="160.0" text="Data" />
+   </children>
+</AnchorPane>

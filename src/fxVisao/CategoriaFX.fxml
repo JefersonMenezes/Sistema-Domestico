@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" prefHeight="452.0" prefWidth="348.0" styleClass="mainFxmlClass" stylesheets="@../style/categoriafx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CategoriaFXController">
+   <children>
+      <TabPane fx:id="tabPane" layoutY="73.0" prefHeight="381.0" prefWidth="348.0" styleClass="mainFxmlClass" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="abaDespesa" text="DESPESAS">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="348.0">
+                     <children>
+                        <ListView fx:id="lvDespesa" layoutY="8.0" prefHeight="266.0" prefWidth="348.0" />
+                        <Button layoutX="264.0" layoutY="277.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="37.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="62.0" text="+" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="abaReceita" text="RECEITAS">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="266.0" prefWidth="348.0">
+                     <children>
+                        <ListView id="abaReceita" fx:id="lvReceita" layoutY="9.0" prefHeight="258.0" prefWidth="348.0" />
+                        <Button layoutX="267.0" layoutY="277.0" maxHeight="-Infinity" mnemonicParsing="false" prefHeight="32.0" prefWidth="60.0" text="+" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Pane layoutX="-4.0" prefHeight="71.0" prefWidth="351.0" styleClass="cabecalhoPane">
+         <children>
+            <Label layoutX="59.0" layoutY="29.0" styleClass="cabecalhoPane" text="Categorias" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
