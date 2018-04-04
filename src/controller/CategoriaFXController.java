@@ -67,6 +67,7 @@ public class CategoriaFXController implements Initializable {
         lvDespesa.setItems(obsDespesas);
         lvReceita.setItems(obsReceitas);
         
+        
     }
     
 }
