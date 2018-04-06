@@ -1,133 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="753.0" styleClass="sidepane" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFXController">
    <children>
-      <VBox prefHeight="580.0" prefWidth="300.0">
+      <VBox prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
          <children>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="300.0" style="-fx-background-color: #00A2D3;" text="Saldo em Contas" textFill="WHITE">
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
+            <Pane prefHeight="93.0" prefWidth="112.0">
                <VBox.margin>
-                  <Insets />
+                  <Insets top="60.0" />
                </VBox.margin>
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <VBox prefHeight="88.0" prefWidth="300.0">
                <children>
-                  <JFXTextField alignment="CENTER" editable="false" prefHeight="75.0" prefWidth="300.0" promptText="%key.unspecified" style="-fx-background-color: transparent;" text="R$ 1000,00">
+                  <Pane prefHeight="38.0" prefWidth="100.0">
+                     <children>
+                        <Icon content="HELP_OUTLINE" layoutY="-1.0" prefHeight="38.0" prefWidth="100.0" />
+                     </children>
+                  </Pane>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutY="47.0" prefHeight="49.0" prefWidth="100.0" text="TRANSAÇÕES" textFill="#a1a1a1" />
+               </children>
+            </Pane>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </VBox>
+      <Pane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5;">
+         <effect>
+            <DropShadow />
+         </effect></Pane>
+      <HBox layoutX="173.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane prefHeight="80.0" prefWidth="120.0" style="-fx-background-color: #2298f2;" />
+            <VBox prefHeight="81.0" prefWidth="244.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Saldo Acumulado" textFill="#a1a1a1" />
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#2298f2">
                      <font>
-                        <Font size="28.0" />
-                     </font>
-                  </JFXTextField>
-                  <Label alignment="TOP_CENTER" contentDisplay="TOP" prefHeight="57.0" prefWidth="300.0" text="Saldo em Contas" textFill="#00a2d3">
-                     <font>
-                        <Font size="15.0" />
+                        <Font size="20.0" />
                      </font>
                   </Label>
                </children>
             </VBox>
-            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
-               <children>
-                  <FontAwesomeIconView fill="#7c8184" glyphName="CIPHER" size="1.3em" wrappingWidth="14.221289038658142" />
-                  <Label text="Visão Geral" textFill="#7c8184">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
-               <children>
-                  <FontAwesomeIconView fill="#2ccc47" glyphName="TOP" size="1.3em" wrappingWidth="14.221289038658142" />
-                  <Label text="Receitas" textFill="#7c8184">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField alignment="CENTER_RIGHT" editable="false" focusColor="#00a2d3" onAction="#jTFReceitas" prefHeight="26.0" prefWidth="179.0" promptText="R$ 0,00" style="-fx-background-color: transparent; -fx-font-fill: white;">
-                     <HBox.margin>
-                        <Insets left="20.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </JFXTextField>
-               </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
-               <children>
-                  <FontAwesomeIconView fill="#fc1e1e" glyphName="BOTTON" size="1.3em" wrappingWidth="14.221289038658142" />
-                  <Label text="Despesas" textFill="#7c8184">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField alignment="CENTER_RIGHT" editable="false" focusColor="#00a2d3" layoutX="128.0" layoutY="17.0" onAction="#jTFReceitas" prefHeight="26.0" prefWidth="181.0" promptText="R$ 0,00" style="-fx-background-color: transparent;">
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </JFXTextField>
-               </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="165.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="300.0">
-               <children>
-                  <FontAwesomeIconView fill="#62eec9" glyphName="CREDIT CARD" size="1.3em" wrappingWidth="14.221289038658142" />
-                  <Label text="Cartão de Crédito" textFill="#7c8184">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <JFXTextField alignment="CENTER_RIGHT" editable="false" focusColor="#00a2d3" labelFloat="true" onAction="#jTFReceitas" prefHeight="26.0" prefWidth="121.0" promptText="R$ 0,00" style="-fx-background-color: transparent;">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
-                  </JFXTextField>
-               </children>
-               <padding>
-                  <Insets left="10.0" />
-               </padding>
-            </HBox>
          </children>
-      </VBox>
-      <VBox layoutX="300.0" prefHeight="580.0" prefWidth="488.0" styleClass="parent" />
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <HBox layoutX="375.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #32c787;" />
+            <VBox prefHeight="81.0" prefWidth="244.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Receitas" textFill="#a1a1a1" />
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#32c787">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <HBox layoutX="581.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #ff5652;" />
+            <VBox prefHeight="81.0" prefWidth="244.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Despesas" textFill="#a1a1a1" />
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#ff5652">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <HBox layoutX="783.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #39bbb0;" />
+            <VBox prefHeight="81.0" prefWidth="244.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Cartão de crédito" textFill="#a1a1a1" />
+                  <Label alignment="TOP_CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="150.0" text="R$ 2030,00" textFill="#39bbb0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </HBox>
+      <Pane layoutX="173.0" layoutY="189.0" prefHeight="271.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <Pane layoutX="581.0" layoutY="189.0" prefHeight="271.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
    </children>
+   <effect>
+      <DropShadow />
+   </effect>
 </AnchorPane>

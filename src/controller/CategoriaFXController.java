@@ -65,9 +65,7 @@ public class CategoriaFXController implements Initializable {
         obsReceitas = FXCollections.observableArrayList(receitas);
         
         lvDespesa.setItems(obsDespesas);
-        lvReceita.setItems(obsReceitas);
-        
-        
+        lvReceita.setItems(obsReceitas);        
     }
     
 }
