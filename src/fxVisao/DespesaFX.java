@@ -21,7 +21,7 @@ public class DespesaFX extends Application {
     
      @Override
     public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("DespesaFX.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/DespesaFX.fxml"));
   
             Scene scene = new Scene(root);
             

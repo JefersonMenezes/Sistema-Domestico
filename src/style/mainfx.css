@@ -4,6 +4,11 @@
 
 
 .vPaneMenu{
-
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-    }
+ }
+
+ .anchorPrincipal {
+    -fx-background-color: #ffffff; /* Altera a cor do plano de fundo do header para a mesma cor do fundo da aplicação */
+    -fx-border-color:  #dbe2e8; /* Define a cor da borda para a mesma cor da borda das abas */
+    -fx-border-width: 0px 0px 1px 0px;  /* Define que a borda inferior terá 1 px (top, left, bottom, right) */
+ }

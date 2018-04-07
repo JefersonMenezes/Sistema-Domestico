@@ -20,7 +20,7 @@ public class LoginFX extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-         Parent root = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/LoginFX.fxml"));
   
             Scene scene = new Scene(root);
             

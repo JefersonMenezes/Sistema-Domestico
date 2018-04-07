@@ -1,44 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Icon?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFXController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFXController">
    <children>
       <VBox prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
-         <children>
-            <Pane prefHeight="93.0" prefWidth="112.0">
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-               <children>
-                  <Pane prefHeight="38.0" prefWidth="100.0">
-                     <children>
-                        <Icon content="HELP_OUTLINE" layoutY="-1.0" prefHeight="38.0" prefWidth="100.0" />
-                     </children>
-                  </Pane>
-                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutY="47.0" prefHeight="49.0" prefWidth="100.0" text="TRANSAÇÕES" textFill="#a1a1a1" />
-               </children>
-            </Pane>
-         </children>
          <effect>
             <DropShadow />
          </effect>
+         <children>
+            <Pane prefHeight="80.0" prefWidth="100.0">
+               <VBox.margin>
+                  <Insets top="63.0" />
+               </VBox.margin>
+               <children>
+                  <FontAwesomeIconView glyphName="EXCHANGE" layoutX="35.0" layoutY="35.0" size="30" />
+                  <Label alignment="CENTER" layoutY="48.0" prefWidth="100.0" text="TRANSAÇÕES" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="73.0" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <FontAwesomeIconView glyphName="BANK" layoutX="35.0" layoutY="35.0" size="30" />
+                  <Label alignment="CENTER" layoutY="48.0" prefWidth="100.0" text="CONTAS" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="153.0" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <FontAwesomeIconView fontSmoothingType="LCD" glyphName="CREDIT_CARD" layoutX="35.0" layoutY="35.0" size="30" />
+                  <Label alignment="CENTER" layoutY="48.0" prefHeight="22.0" prefWidth="100.0" text="CARTÕES" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="233.0" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <FontAwesomeIconView glyphName="BAR_CHART" layoutX="35.0" layoutY="35.0" size="30" />
+                  <Label alignment="CENTER" layoutY="48.0" prefWidth="100.0" text="RELATÓRIOS" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="313.0" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <FontAwesomeIconView glyphName="CLIPBOARD" layoutX="35.0" layoutY="35.0" size="30" />
+                  <Label alignment="CENTER" layoutY="48.0" prefWidth="100.0" text="ORÇAMENTO" />
+               </children>
+            </Pane>
+            <Pane layoutX="10.0" layoutY="393.0" prefHeight="80.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="lSair" alignment="CENTER" layoutY="48.0" onMouseClicked="#sair" prefHeight="38.0" prefWidth="100.0" text="SAIR" />
+                  <MaterialDesignIconView glyphName="EXIT_TO_APP" layoutX="35.0" layoutY="40.0" rotate="180.0" size="30" />
+               </children>
+            </Pane>
+         </children>
       </VBox>
-      <Pane prefHeight="60.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5;">
+      <Pane prefHeight="60.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5;">
          <effect>
             <DropShadow />
-         </effect></Pane>
+         </effect>
+         <children>
+            <FontAwesomeIconView glyphName="USER_CIRCLE_ALT" layoutX="945.0" layoutY="40.0" size="30" />
+            <Label alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="758.0" layoutY="21.0" prefHeight="18.0" prefWidth="180.0" text="Usuário logado" />
+            <HBox layoutY="-1.0" prefHeight="60.0" prefWidth="215.0">
+               <children>
+                  <OctIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="FLAME" size="50" textOrigin="CENTER" wrappingWidth="40.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="0.8047619047619048" startX="1.0" startY="0.33333333333333326">
+                           <stops>
+                              <Stop color="#eb4a0b" />
+                              <Stop color="#ffff43" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </OctIconView>
+                  <Label contentDisplay="CENTER" prefHeight="60.0" prefWidth="158.0" text="Jeferson Menezes " wrapText="true">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
       <HBox layoutX="173.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Pane prefHeight="80.0" prefWidth="120.0" style="-fx-background-color: #2298f2;" />
+            <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #2298f2;">
+               <children>
+                  <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="BANK" layoutX="4.0" layoutY="47.0" size="20" wrappingWidth="19.428571701049805" />
+               </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Saldo Acumulado" textFill="#a1a1a1" />
@@ -56,7 +120,10 @@
       </HBox>
       <HBox layoutX="375.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #32c787;" />
+            <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #32c787;">
+               <children>
+                  <FontAwesomeIconView glyphName="UPLOAD" layoutX="7.0" layoutY="47.0" size="20" />
+               </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Receitas" textFill="#a1a1a1" />
@@ -74,7 +141,10 @@
       </HBox>
       <HBox layoutX="581.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #ff5652;" />
+            <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #ff5652;">
+               <children>
+                  <FontAwesomeIconView glyphName="DOWNLOAD" layoutX="7.0" layoutY="47.0" size="20" />
+               </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Despesas" textFill="#a1a1a1" />
@@ -92,7 +162,10 @@
       </HBox>
       <HBox layoutX="783.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
          <children>
-            <Pane prefHeight="81.0" prefWidth="130.0" style="-fx-background-color: #39bbb0;" />
+            <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #39bbb0;">
+               <children>
+                  <FontAwesomeIconView glyphName="CREDIT_CARD" layoutX="4.0" layoutY="47.0" size="20" />
+               </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Cartão de crédito" textFill="#a1a1a1" />
@@ -112,6 +185,9 @@
          <effect>
             <DropShadow />
          </effect>
+         <children>
+            <PieChart fx:id="pcDespeasas" layoutX="1.0" legendSide="RIGHT" prefHeight="271.0" prefWidth="380.0" title="Despesas do Mês" />
+         </children>
       </Pane>
       <Pane layoutX="581.0" layoutY="189.0" prefHeight="271.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
          <effect>

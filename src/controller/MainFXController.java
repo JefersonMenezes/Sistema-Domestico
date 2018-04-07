@@ -7,9 +7,12 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -20,6 +23,17 @@ public class MainFXController implements Initializable {
     
     @FXML
     private Label labelOlaMundo;
+    
+      @FXML
+    private Label lSair;
+    
+    @FXML
+    private PieChart pcDespeasas;
+
+    @FXML
+    void sair(MouseEvent event) {
+        System.exit(0);
+    }
     
     @FXML
     private void botaoOlaMundo(){
@@ -36,5 +50,7 @@ public class MainFXController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+   
     
 }

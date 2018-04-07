@@ -21,7 +21,7 @@ public class CategoriaFX extends Application {
     
     @Override
     public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("CategoriaFX.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/CategoriaFX.fxml"));
   
             Scene scene = new Scene(root);
             
