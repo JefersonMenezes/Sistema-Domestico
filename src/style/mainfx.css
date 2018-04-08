@@ -12,3 +12,10 @@
     -fx-border-color:  #dbe2e8; /* Define a cor da borda para a mesma cor da borda das abas */
     -fx-border-width: 0px 0px 1px 0px;  /* Define que a borda inferior terá 1 px (top, left, bottom, right) */
  }
+ 
+ .button-plus{
+    -fx-text-fill: #ffffff;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 30px;
+    -fx-font-size: 24pt;
+}

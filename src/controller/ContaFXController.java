@@ -78,6 +78,11 @@ public class ContaFXController implements Initializable {
                 TipoConta tipo = new TipoConta();
                 tipo.setId(cbCategoria.getSelectionModel().getSelectedItem().getId());
                 conta.setTipoConta(tipo);
+                
+                user = new Usuario();
+                user.setId(1);
+                user.setNome("Jeferson Menezes");
+        
                 conta.setUsuario(user);
                 
                 ContaDAO dao = new ContaDAO();

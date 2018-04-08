@@ -97,12 +97,12 @@ public class ContaDAO {
         }
     }
 
-    public double listaSomaContas(Usuario user) {
-         String sql = "SELECT sum(saldo_inicial) FROM financa.conta where usuario_id = ?";
+    public double listaSomaContas(int idUser) {
+         String sql = "SELECT sum(saldo_inicial) FROM financa.conta where usuario_id = ? and inclui_soma = true;";
         try {
             double total = 0;
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setInt(1, user.getId());
+            stmt.setInt(1, idUser);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
