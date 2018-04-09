@@ -15,7 +15,9 @@
  
  .button-plus{
     -fx-text-fill: #ffffff;
-    -fx-border-radius: 50px;
-    -fx-background-radius: 30px;
+    
+    -fx-background-radius: 25px;
     -fx-font-size: 24pt;
 }
+
+/* -fx-border-radius: 50px; */

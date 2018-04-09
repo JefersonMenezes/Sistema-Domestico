@@ -9,6 +9,7 @@ import dao.ContaDAO;
 import dao.DespesaDAO;
 import dao.ReceitaDAO;
 import fxVisao.DespesaFX;
+import fxVisao.ReceitaFX;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -17,14 +18,18 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import modelo.Despesa;
 import modelo.Receita;
 import modelo.Usuario;
@@ -63,6 +68,9 @@ public class MainFXController implements Initializable {
 
     @FXML
     private PieChart pcReceitas;
+
+    @FXML
+    private StackPane stack;
 
     @FXML
     void sair(MouseEvent event) {
@@ -135,19 +143,19 @@ public class MainFXController implements Initializable {
         user = new Usuario();
         user.setId(1);
         user.setNome("Jeferson Menezes");
-        
+
         DateDetails dNow = new DateDetails(dataCorrente);
         List<LocalDate> dates = new ArrayList<LocalDate>();
         dates = dNow.getMinMaxMes();
-        
+
         ContaDAO Cdao = new ContaDAO();
         this.totalContas = Cdao.listaSomaContas(user.getId());
 
         DespesaDAO Ddao = new DespesaDAO();
-        this.totalDespesas = Ddao.listaSomaDespesas(user.getId(),dates.get(0),dates.get(1));
-        
-        ReceitaDAO  Rdao = new ReceitaDAO();
-        this.totalReceitas = Rdao.listaSomaDespesas(user.getId(),dates.get(0),dates.get(1));
+        this.totalDespesas = Ddao.listaSomaDespesas(user.getId(), dates.get(0), dates.get(1));
+
+        ReceitaDAO Rdao = new ReceitaDAO();
+        this.totalReceitas = Rdao.listaSomaDespesas(user.getId(), dates.get(0), dates.get(1));
 
         mostraTotais();
     }
@@ -155,7 +163,7 @@ public class MainFXController implements Initializable {
     private void mostraTotais() {
         lTotalContas.setText("R$ " + String.valueOf(this.totalContas));
         lTotalDespesas.setText("R$ " + String.valueOf(this.totalDespesas));
-        lTotalReceitas.setText("R$ "+ String.valueOf(this.totalReceitas));
+        lTotalReceitas.setText("R$ " + String.valueOf(this.totalReceitas));
     }
 
     private void pegaDataCorrente() {
@@ -168,15 +176,35 @@ public class MainFXController implements Initializable {
     private void mostraData() {
         lDataAtual.setText(String.valueOf(this.dataCorrente));
     }
-    
-    private void addReceita() throws IOException{
+
+    private void addReceita() throws IOException {
         user = new Usuario();
         user.setId(1);
         user.setNome("Jeferson Menezes");
-        
+
         Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/DespesaFX.fxml"));
-  
-           ///-------------------------------------------------------
+
+        ///-------------------------------------------------------
+    }
+
+    
+    @FXML
+    void goToDespesa() throws IOException {
+        user = new Usuario();
+        user.setId(1);
+        user.setNome("Jeferson Menezes");
+        DespesaFX.setUser(user);
+        new DespesaFX().start(new Stage());
+    }
+     
+
+    @FXML
+    void goToReceita() throws IOException {
+        user = new Usuario();
+        user.setId(1);
+        user.setNome("Jeferson Menezes");
+        ReceitaFX.setUser(user);
+        new ReceitaFX().start(new Stage());
     }
 
 }

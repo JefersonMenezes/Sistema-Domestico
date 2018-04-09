@@ -191,14 +191,14 @@
             <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="380.0" title="Receitas do Mês" />
          </children>
       </Pane>
-      <Pane layoutX="1015.0" layoutY="79.0" prefHeight="383.0" prefWidth="59.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="1015.0" layoutY="80.0" prefHeight="380.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow color="#e3ca02" height="10.5" radius="4.41" width="9.14" />
          </effect>
          <children>
-            <Button layoutX="3.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addReceita" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="2.0" layoutY="104.0" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#addDespesa" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="2.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" onAction="#goToReceita" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="116.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" onAction="#goToDespesa" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="202.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

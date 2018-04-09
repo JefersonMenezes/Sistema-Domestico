@@ -43,49 +43,56 @@ public class DespesaFXController implements Initializable {
     Alertas alerta = new Alertas();
     private Usuario user;
 
-    
     @FXML
     private DatePicker dpData;
-
     @FXML
     private TextField tfDescricao;
-
     @FXML
     private TextField tfValor;
-
     @FXML
     private ChoiceBox<Categoria> cbCategoria;
-
     @FXML
     private ChoiceBox<Conta> cbConta;
-
     @FXML
     private CheckBox cbPago;
-
     @FXML
     private Label lVoltar;
+    @FXML
+    private Label lUsuarioLogado;
 
+    public static DespesaFXController controller;
+    
+    public Usuario getUsuario() {
+        return user;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        user = usuario;
+    }
+
+    public DespesaFXController(Usuario usuario) {
+        this.user = usuario;
+    }
+
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        controller = this;
         listarCategorias();
         listarContas();
         initCampos();
+        //mostraUsuário();
     }
-    private void initCampos(){
+
+    private void initCampos() {
         dpData.setValue(LocalDate.now());
     }
-    
 
     public void listarContas() {
         ContaDAO dao = new ContaDAO();
-
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         contas = dao.listaContasUser(user);
         obsContas = FXCollections.observableArrayList(contas);
         cbConta.setItems(obsContas);
@@ -125,14 +132,14 @@ public class DespesaFXController implements Initializable {
         despesa.setPago(cbPago.selectedProperty().getValue());
 
         if (despesa.isPago()) {
-            System.err.println("Valor : "+despesa.getValor());
-            System.out.println("Saldo : "+despesa.getConta().getSaldoInicial());
+            System.err.println("Valor : " + despesa.getValor());
+            System.out.println("Saldo : " + despesa.getConta().getSaldoInicial());
             if (despesa.getValor() > despesa.getConta().getSaldoInicial()) {
                 alerta.getAlert("Atenção", "Saldo insuficiente", "A conta selecionada não posui saldo suficiente para pagamento!");
             } else {
                 DespesaDAO dao = new DespesaDAO();
                 dao.inserir(despesa);
-                
+
                 ContaDAO c = new ContaDAO();
                 c.setSubtraiSaldo(despesa.getValor(), despesa.getConta().getId());
                 alerta.getInformacao("Sucesso", "Despesa Salva", "A despesa " + tfDescricao.getText() + " foi salva com sucesso!");
@@ -153,6 +160,10 @@ public class DespesaFXController implements Initializable {
         tfDescricao.setText("");
         cbCategoria.getSelectionModel().select(-1);
         cbConta.getSelectionModel().select(-1);
+    }
+
+    private void mostraUsuário() {
+        lUsuarioLogado.setText(user.getNome());
     }
 
 }

@@ -41,7 +41,7 @@ public class ReceitaFXController implements Initializable {
     private ObservableList<Categoria> obsReceitas;
 
     Alertas alerta = new Alertas();
-    private Usuario user;
+    private static Usuario user;
 
     @FXML
     private Label lVoltar;
@@ -57,6 +57,13 @@ public class ReceitaFXController implements Initializable {
     private ChoiceBox<Conta> cbConta;
     @FXML
     private ChoiceBox<Categoria> cbCategoria;
+    
+    public Usuario getUsuario(){
+        return user;
+    }
+    public static void setUsuario(Usuario usuario){
+        ReceitaFXController.user = usuario;
+    }
 
     /**
      * Initializes the controller class.

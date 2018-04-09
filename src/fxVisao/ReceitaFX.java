@@ -12,21 +12,31 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import static javafx.application.Application.launch;
+import modelo.Usuario;
 
 /**
  *
  * @author zion
  */
 public class ReceitaFX extends Application {
-    
-     @Override
+
+    static Usuario user;
+
+    public static void setUser(Usuario user) {
+        ReceitaFX.user = user;
+    }
+
+    public static Usuario getUser() {
+        return ReceitaFX.user;
+    }
+
+    @Override
     public void start(Stage stage) throws IOException {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/ReceitaFX.fxml"));
-  
-            Scene scene = new Scene(root);
-            
-            stage.setScene(scene);
-            stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/ReceitaFX.fxml"));
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**
@@ -35,5 +45,5 @@ public class ReceitaFX extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
