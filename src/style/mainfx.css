@@ -7,6 +7,15 @@
 }
 
 .sidepane {
-    -fx-background-color: #333645;
+    -fx-background-color:rgba(51, 54, 69, 0.8);
 }
+
+.saldo-textD{
+    -fx-font-fill:red!important;
+}
+
+.text-saldo-contas {
+    -fx-font-fill:#ffffff;
+}
+
 

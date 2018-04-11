@@ -5,11 +5,11 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -19,16 +19,17 @@ import javafx.scene.control.Label;
 public class MainFXController implements Initializable {
     
     @FXML
-    private Label labelOlaMundo;
-    
-    @FXML
-    private void botaoOlaMundo(){
-        int i = 0;
-        i= i +1;
-        System.out.println("Você clicou no botão");
-        labelOlaMundo.setText("Parabéns Você clicou pela "+i+"° vez");
-    }
+    private JFXTextField tfSaldoContas;
 
+    @FXML
+    private JFXTextField tfSaldoReceitas;
+
+    @FXML
+    private JFXTextField tfSaldoDespesas;
+
+    @FXML
+    private JFXTextField tfSaldoCartao;
+    
     /**
      * Initializes the controller class.
      */
