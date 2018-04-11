@@ -8,6 +8,7 @@ package controller;
 import dao.ContaDAO;
 import dao.DespesaDAO;
 import dao.ReceitaDAO;
+import fxVisao.ContaFX;
 import fxVisao.DespesaFX;
 import fxVisao.ReceitaFX;
 import java.io.IOException;
@@ -18,13 +19,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -62,6 +60,8 @@ public class MainFXController implements Initializable {
 
     @FXML
     private Label lSair;
+    @FXML
+    private Label lUsuarioLogado;
 
     @FXML
     private PieChart pcDespesas;
@@ -71,11 +71,6 @@ public class MainFXController implements Initializable {
 
     @FXML
     private StackPane stack;
-
-    @FXML
-    void sair(MouseEvent event) {
-        System.exit(0);
-    }
 
     private List<Receita> receitasPiza;
     private List<Despesa> despesasPiza;
@@ -90,11 +85,27 @@ public class MainFXController implements Initializable {
 
     private LocalDate dataCorrente;
 
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario usuario) {
+        this.user = usuario;
+    }
+
+    public MainFXController() {
+    }
+
+    public MainFXController(Usuario user) {
+        this.user = user;
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        mostraUsuario();
         pegaDataCorrente();
         listaDespesasPiza();
         listaReceitasPiza();
@@ -102,10 +113,6 @@ public class MainFXController implements Initializable {
     }
 
     private void listaDespesasPiza() {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         DespesaDAO dao = new DespesaDAO();
         despesasPiza = dao.getDespesasCategoria(user.getId());
 
@@ -113,10 +120,6 @@ public class MainFXController implements Initializable {
     }
 
     private void listaReceitasPiza() {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         ReceitaDAO dao = new ReceitaDAO();
         receitasPiza = dao.getReceitasCategoria(user.getId());
 
@@ -140,10 +143,6 @@ public class MainFXController implements Initializable {
     }
 
     private void listaTotais() {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         DateDetails dNow = new DateDetails(dataCorrente);
         List<LocalDate> dates = new ArrayList<LocalDate>();
         dates = dNow.getMinMaxMes();
@@ -178,33 +177,36 @@ public class MainFXController implements Initializable {
     }
 
     private void addReceita() throws IOException {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/DespesaFX.fxml"));
 
         ///-------------------------------------------------------
     }
 
-    
     @FXML
     void goToDespesa() throws IOException {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
         DespesaFX.setUser(user);
         new DespesaFX().start(new Stage());
     }
-     
 
     @FXML
     void goToReceita() throws IOException {
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
         ReceitaFX.setUser(user);
         new ReceitaFX().start(new Stage());
+    }
+
+    @FXML
+    void goToConta() throws IOException {
+        ContaFX.setUser(user);
+        new ContaFX().start(new Stage());
+    }
+
+    @FXML
+    void sair(MouseEvent event) {
+        System.exit(0);
+    }
+
+    private void mostraUsuario() {
+        lUsuarioLogado.setText(user.getNome());
     }
 
 }

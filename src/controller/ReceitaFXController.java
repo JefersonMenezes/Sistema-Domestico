@@ -41,7 +41,7 @@ public class ReceitaFXController implements Initializable {
     private ObservableList<Categoria> obsReceitas;
 
     Alertas alerta = new Alertas();
-    private static Usuario user;
+    private Usuario user;
 
     @FXML
     private Label lVoltar;
@@ -61,9 +61,18 @@ public class ReceitaFXController implements Initializable {
     public Usuario getUsuario(){
         return user;
     }
-    public static void setUsuario(Usuario usuario){
-        ReceitaFXController.user = usuario;
+    public void setUsuario(Usuario usuario){
+        this.user = usuario;
     }
+
+    public ReceitaFXController() {
+    }
+
+    public ReceitaFXController(Usuario user) {
+        this.user = user;
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -81,10 +90,6 @@ public class ReceitaFXController implements Initializable {
 
     public void listarContas() {
         ContaDAO dao = new ContaDAO();
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         contas = dao.listaContasUser(user);
         obsContas = FXCollections.observableArrayList(contas);
         cbConta.setItems(obsContas);

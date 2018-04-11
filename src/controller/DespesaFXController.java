@@ -47,7 +47,7 @@ public class DespesaFXController implements Initializable {
     private DatePicker dpData;
     @FXML
     private TextField tfDescricao;
-    @FXML
+    @FXML//
     private TextField tfValor;
     @FXML
     private ChoiceBox<Categoria> cbCategoria;
@@ -60,8 +60,7 @@ public class DespesaFXController implements Initializable {
     @FXML
     private Label lUsuarioLogado;
 
-    public static DespesaFXController controller;
-    
+    //public static DespesaFXController controller;
     public Usuario getUsuario() {
         return user;
     }
@@ -72,15 +71,19 @@ public class DespesaFXController implements Initializable {
 
     public DespesaFXController(Usuario usuario) {
         this.user = usuario;
+        System.err.println("Usuario: "+this.user.getNome());
     }
 
-    
+    public DespesaFXController() {
+
+    }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        controller = this;
+        //controller = this;
         listarCategorias();
         listarContas();
         initCampos();

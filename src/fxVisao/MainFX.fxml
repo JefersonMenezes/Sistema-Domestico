@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFXController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
          <effect>
@@ -70,7 +70,7 @@
          </effect>
          <children>
             <FontAwesomeIconView glyphName="USER_CIRCLE_ALT" layoutX="1056.0" layoutY="39.0" size="30" />
-            <Label alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="861.0" layoutY="19.0" prefHeight="18.0" prefWidth="180.0" text="Usuário logado" />
+            <Label fx:id="lUsuarioLogado" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="861.0" layoutY="19.0" prefHeight="18.0" prefWidth="180.0" text="Usuário logado" />
             <HBox layoutY="-1.0" prefHeight="60.0" prefWidth="215.0">
                <children>
                   <OctIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="FLAME" size="50" textOrigin="CENTER" wrappingWidth="40.0">
@@ -196,9 +196,10 @@
             <DropShadow color="#e3ca02" height="10.5" radius="4.41" width="9.14" />
          </effect>
          <children>
-            <Button layoutX="3.0" layoutY="33.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" onAction="#goToReceita" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="3.0" layoutY="116.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" onAction="#goToDespesa" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="3.0" layoutY="202.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="53.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="53.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="125.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="233.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="327.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="29.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

@@ -5,13 +5,14 @@
  */
 package fxVisao;
 
+import controller.ContaFXController;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modelo.Usuario;
 
 /**
  *
@@ -19,6 +20,24 @@ import javafx.stage.Stage;
  */
 public class ContaFX extends Application {
     
+    private static Usuario user;
+
+    public static void setUser(Usuario usuario) {
+        ContaFX.user = usuario;
+    }
+
+    public static Usuario getUser() {
+        return ContaFX.user;
+    }
+    
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxVisao/ContaFX.fxml"));
+        fxmlloader.setController(new ContaFXController(user));
+        stage.setScene(new Scene(fxmlloader.load()));
+        stage.show();
+    }
+    /*
     @Override
     public void start(Stage stage) throws IOException {
             Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/ContaFX.fxml"));
@@ -28,7 +47,7 @@ public class ContaFX extends Application {
             stage.setScene(scene);
             stage.show();
     }
-
+    */
     /**
      * @param args the command line arguments
      */

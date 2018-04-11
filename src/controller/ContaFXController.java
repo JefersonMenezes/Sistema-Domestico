@@ -28,23 +28,27 @@ import util.Alertas;
  * @author zion
  */
 public class ContaFXController implements Initializable {
-    
+
     private List<TipoConta> tipoContas;
     private ObservableList<TipoConta> obsTipoContas;
     private Usuario user;
     Alertas alerta = new Alertas();
-    
+
     @FXML
     private TextField nome;
-    
     @FXML
     private TextField SaldoInicial;
-    
     @FXML
     private ChoiceBox<TipoConta> cbCategoria;
-    
     @FXML
     private CheckBox cbJava;
+
+    public ContaFXController() {
+    }
+
+    public ContaFXController(Usuario user) {
+        this.user = user;
+    }
 
     /**
      * Initializes the controller class.
@@ -52,23 +56,23 @@ public class ContaFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listarTipoContas();
-    }    
-    
+    }
+
     public void listarTipoContas() {
         TipoContaDAO dao = new TipoContaDAO();
         tipoContas = dao.listar();
-        
+
         obsTipoContas = FXCollections.observableArrayList(tipoContas);
         cbCategoria.setItems(obsTipoContas);
     }
-    
+
     public int tipoContaSelecionada() {
         TipoConta tipoConta = cbCategoria.getSelectionModel().getSelectedItem();
         System.out.println("Tipo Conta: ID=" + tipoConta.getId() + " - Nome=" + tipoConta.getTipo());
         System.err.println("Acionado: " + cbJava.selectedProperty().getValue());
         return 1;
     }
-    
+
     public void incluirConta() {
         if (!nome.getText().equals("") && !SaldoInicial.getText().equals("")) {
             if (cbCategoria.getSelectionModel().getSelectedIndex() != -1) {
@@ -78,23 +82,23 @@ public class ContaFXController implements Initializable {
                 TipoConta tipo = new TipoConta();
                 tipo.setId(cbCategoria.getSelectionModel().getSelectedItem().getId());
                 conta.setTipoConta(tipo);
-                
+
                 user = new Usuario();
                 user.setId(1);
                 user.setNome("Jeferson Menezes");
-        
+
                 conta.setUsuario(user);
-                
+
                 ContaDAO dao = new ContaDAO();
                 dao.inserir(conta);
-                
-                alerta.getInformacao("Sucesso","Cabecalho", "Conta "+nome.getText()+"  Cadastrada com sucesso!");
-            } else{
-                alerta.getAlert("Atenção", "Verifique", "O tipo de Conta é obrigatório!");   
+
+                alerta.getInformacao("Sucesso", "Cabecalho", "Conta " + nome.getText() + "  Cadastrada com sucesso!");
+            } else {
+                alerta.getAlert("Atenção", "Verifique", "O tipo de Conta é obrigatório!");
             }
         } else {
             alerta.getAlert("Atenção", "Verifique", "O Todos os campos são obrigatório!");
-            
+
         }
     }
 }
