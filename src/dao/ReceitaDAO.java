@@ -99,7 +99,7 @@ public class ReceitaDAO {
         }
     }
 
-    public double listaSomaDespesas(int idUser, LocalDate inicio, LocalDate fim) {
+    public double listaSomaReceitas(int idUser, LocalDate inicio, LocalDate fim) {
          String sql  = "SELECT sum(valor) as valor FROM financa.receita JOIN financa.conta ON conta_id = conta.id where usuario_id = ? and data between ? and ?";
         
          try {

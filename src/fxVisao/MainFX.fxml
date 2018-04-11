@@ -198,7 +198,7 @@
          <children>
             <Button layoutX="3.0" layoutY="125.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
             <Button layoutX="3.0" layoutY="233.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="3.0" layoutY="327.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="3.0" layoutY="316.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
             <Button layoutX="3.0" layoutY="29.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>

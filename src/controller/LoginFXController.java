@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import dao.UsuarioDAO;
@@ -34,6 +35,9 @@ public class LoginFXController implements Initializable {
     @FXML
     private JFXPasswordField password;
 
+    @FXML
+    private JFXButton jfxLogin;
+
     private Usuario user;
     List<Usuario> usuarios;
 
@@ -41,11 +45,9 @@ public class LoginFXController implements Initializable {
         return user;
     }
 
-    Alertas alerta = new Alertas();
+    LoginFXController loginController;
 
-    public void setUser(Usuario user) {
-        this.user = user;
-    }
+    Alertas alerta = new Alertas();
 
     /**
      * Initializes the controller class.
@@ -93,6 +95,13 @@ public class LoginFXController implements Initializable {
     private void goToHome() throws IOException {
         MainFX.setUser(user);
         new MainFX().start(new Stage());
-        Platform.exit();
+
+        Stage stage = (Stage) jfxLogin.getScene().getWindow(); //Obtendo a janela atual
+        stage.close();
+
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
     }
 }

@@ -102,6 +102,7 @@ public class ReceitaFXController implements Initializable {
         cbCategoria.setItems(obsReceitas);
     }
 
+    @FXML
     public void registraReceita() {
         if (!tfValor.getText().equals("") && !tfDescricao.getText().equals("")) {
             if (cbCategoria.getSelectionModel().getSelectedIndex() != -1 && cbConta.getSelectionModel().getSelectedIndex() != -1) {

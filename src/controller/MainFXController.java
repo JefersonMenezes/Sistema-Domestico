@@ -154,7 +154,7 @@ public class MainFXController implements Initializable {
         this.totalDespesas = Ddao.listaSomaDespesas(user.getId(), dates.get(0), dates.get(1));
 
         ReceitaDAO Rdao = new ReceitaDAO();
-        this.totalReceitas = Rdao.listaSomaDespesas(user.getId(), dates.get(0), dates.get(1));
+        this.totalReceitas = Rdao.listaSomaReceitas(user.getId(), dates.get(0), dates.get(1));
 
         mostraTotais();
     }
