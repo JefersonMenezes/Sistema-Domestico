@@ -6,6 +6,7 @@
 package util;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,21 @@ import java.util.List;
  */
 public class DateDetails {
 
+    private final LocalDate dataLocal;
+    private final boolean anoBissexto;
+    private final int anoNumero;
+    private final int numeroDiasAno;
+
+    private final String mesNome;
+    private final int mesNumero;
+    private final int diasMes;
+    private final int diaDoMes;
+
+    private final String diaSemanaNome;
+    private final int diaSemanaNumero;
+
     public DateDetails(LocalDate localDate) {
+        this.dataLocal = localDate;
 
         this.anoBissexto = localDate.isLeapYear();
         this.anoNumero = localDate.getYear();
@@ -28,19 +43,6 @@ public class DateDetails {
         this.diaDoMes = localDate.getDayOfMonth();
         mostraTodos();
     }
-
-    private final boolean anoBissexto;
-    private final int anoNumero;
-    private final int numeroDiasAno;
-
-    private final String mesNome;
-    private final int mesNumero;
-    private final int diasMes;
-    private final int diaDoMes;
-    
-    private final String diaSemanaNome;
-    private final int diaSemanaNumero;
-    
 
     public boolean isAnoBissexto() {
         return anoBissexto;
@@ -64,7 +66,7 @@ public class DateDetails {
     }
 
     public String getDiaSemanaNome() {
-        String dia[] = {"Segunda feira", "Terça feira", "Quarta feira", "Quinta feira", "Sexta feira", "Sábado","Domingo"};
+        String dia[] = {"Segunda feira", "Terça feira", "Quarta feira", "Quinta feira", "Sexta feira", "Sábado", "Domingo"};
         return dia[diaSemanaNumero];
     }
 
@@ -75,11 +77,10 @@ public class DateDetails {
     public int getDiasMes() {
         return diasMes;
     }
-    
-    public int getDiaDoMes(){
+
+    public int getDiaDoMes() {
         return diaDoMes;
     }
-            
 
     public List<LocalDate> getMinMaxMes() {
         List<LocalDate> bMes;
@@ -93,17 +94,23 @@ public class DateDetails {
         return bMes;
     }
 
+    public String getDateFormatBR() {
+        DateTimeFormatter formatters = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String text = dataLocal.format(formatters);
+        return text;
+    }
+
     private void mostraTodos() {
-        
-        System.out.println("é bissexto......: "+this.anoBissexto);
-        System.out.println("ano.............: "+this.anoNumero);
-        System.out.println("numero dias.....: "+this.numeroDiasAno);
-        System.out.println("Mes.............: "+this.mesNome);
-        System.out.println("Mes numero......: "+this.mesNumero);
-        System.err.println("Dia do Mês......: "+this.diaDoMes);
-        System.out.println("Semana..........: "+this.diaSemanaNome);
-        System.out.println("Semana dia......: "+this.diaSemanaNumero);
-        System.out.println("Numero dias Mes.: "+this.diasMes);
+
+        System.out.println("é bissexto......: " + this.anoBissexto);
+        System.out.println("ano.............: " + this.anoNumero);
+        System.out.println("numero dias.....: " + this.numeroDiasAno);
+        System.out.println("Mes.............: " + this.mesNome);
+        System.out.println("Mes numero......: " + this.mesNumero);
+        System.err.println("Dia do Mês......: " + this.diaDoMes);
+        System.out.println("Semana..........: " + this.diaSemanaNome);
+        System.out.println("Semana dia......: " + this.diaSemanaNumero);
+        System.out.println("Numero dias Mes.: " + this.diasMes);
         System.out.println("------------------------------------");
     }
 }

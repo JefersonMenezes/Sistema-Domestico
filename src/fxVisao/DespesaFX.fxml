@@ -29,6 +29,5 @@
          </children>
       </Pane>
       <Label layoutX="173.0" layoutY="160.0" text="Data" />
-      <Label fx:id="lUsuarioLogado" layoutX="112.0" layoutY="429.0" prefHeight="17.0" prefWidth="154.0" text="Label" />
    </children>
 </AnchorPane>

@@ -2,20 +2,23 @@
  * Empty Stylesheet file.
  */
 
-.parent{
-    -fx-background-color: #fff;
+
+.vPaneMenu{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+ }
+
+ .anchorPrincipal {
+    -fx-background-color: #ffffff; /* Altera a cor do plano de fundo do header para a mesma cor do fundo da aplicação */
+    -fx-border-color:  #dbe2e8; /* Define a cor da borda para a mesma cor da borda das abas */
+    -fx-border-width: 0px 0px 1px 0px;  /* Define que a borda inferior terá 1 px (top, left, bottom, right) */
+ }
+ 
+ .button-plus{
+    -fx-text-fill: #ffffff;
+    -fx-width:40px;
+    
+    -fx-background-radius: 25px;
+    -fx-font-size: 12pt;
 }
 
-.sidepane {
-    -fx-background-color:rgba(51, 54, 69, 0.8);
-}
-
-.saldo-textD{
-    -fx-font-fill:red!important;
-}
-
-.text-saldo-contas {
-    -fx-font-fill:#ffffff;
-}
-
-
+/* -fx-border-radius: 50px; */
