@@ -57,6 +57,22 @@ public class ReceitaFXController implements Initializable {
     private ChoiceBox<Conta> cbConta;
     @FXML
     private ChoiceBox<Categoria> cbCategoria;
+    
+    public Usuario getUsuario(){
+        return user;
+    }
+    public void setUsuario(Usuario usuario){
+        this.user = usuario;
+    }
+
+    public ReceitaFXController() {
+    }
+
+    public ReceitaFXController(Usuario user) {
+        this.user = user;
+    }
+    
+    
 
     /**
      * Initializes the controller class.
@@ -74,10 +90,6 @@ public class ReceitaFXController implements Initializable {
 
     public void listarContas() {
         ContaDAO dao = new ContaDAO();
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
         contas = dao.listaContasUser(user);
         obsContas = FXCollections.observableArrayList(contas);
         cbConta.setItems(obsContas);
@@ -90,6 +102,7 @@ public class ReceitaFXController implements Initializable {
         cbCategoria.setItems(obsReceitas);
     }
 
+    @FXML
     public void registraReceita() {
         if (!tfValor.getText().equals("") && !tfDescricao.getText().equals("")) {
             if (cbCategoria.getSelectionModel().getSelectedIndex() != -1 && cbConta.getSelectionModel().getSelectedIndex() != -1) {

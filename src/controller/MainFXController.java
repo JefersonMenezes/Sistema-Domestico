@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import modelo.Usuario;
 
 /**
  * FXML Controller class
@@ -29,6 +30,24 @@ public class MainFXController implements Initializable {
 
     @FXML
     private JFXTextField tfSaldoCartao;
+    
+    private Usuario user;
+
+    public Usuario getUser() {
+        return user;
+    }
+
+    public void setUser(Usuario user) {
+        this.user = user;
+    }
+
+    public MainFXController() {
+    }
+
+    public MainFXController(Usuario user) {
+        this.user = user;
+    }
+    
     
     /**
      * Initializes the controller class.

@@ -31,13 +31,14 @@ public class ContaDAO {
     }
 
     public void inserir(Conta conta) {
-        String sql = "INSERT INTO `financa`.`conta` (`nome`,`saldo_inicial`,`usuario_id`,`tipo_conta_id`) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO `financa`.`conta` (`nome`,`saldo_inicial`,`usuario_id`,`tipo_conta_id`,`inclui_soma` ) VALUES (?,?,?,?,?)";
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, conta.getNome());
             stmt.setDouble(2, conta.getSaldoInicial());
             stmt.setInt(3, conta.getUsuario().getId());
             stmt.setInt(4, conta.getTipoConta().getId());
+            stmt.setBoolean(5, conta.isIncluiSoma());
             stmt.execute();
 
             stmt.close();
@@ -61,6 +62,7 @@ public class ContaDAO {
                 conta.setId(rs.getInt("id"));
                 conta.setNome(rs.getString("nome"));
                 conta.setSaldoInicial(rs.getDouble("saldo_inicial"));
+                conta.setIncluiSoma(rs.getBoolean("inclui_soma"));
                 
                 TipoConta tipo = new TipoConta();
                 tipo.setTipo(rs.getString("tipo"));
@@ -97,12 +99,12 @@ public class ContaDAO {
         }
     }
 
-    public double listaSomaContas(Usuario user) {
-         String sql = "SELECT sum(saldo_inicial) FROM financa.conta where usuario_id = ?";
+    public double listaSomaContas(int idUser) {
+         String sql = "SELECT sum(saldo_inicial) FROM financa.conta where usuario_id = ? and inclui_soma = true;";
         try {
             double total = 0;
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setInt(1, user.getId());
+            stmt.setInt(1, idUser);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

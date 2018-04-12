@@ -6,18 +6,15 @@
 package Teste;
 
 import factory.ConnectionFactory;
-import javax.swing.JOptionPane;
-
+import java.sql.Connection;
 /**
  *
  * @author zion
  */
 public class Testes {
-    
-    public static void main(String[]args){
-        ConnectionFactory c = new ConnectionFactory();
-        c.getConnection();
-        JOptionPane.showMessageDialog(null, "Conexão realizda comsucesso!!!");
+
+    public static void main(String[] args) {
+        Connection conexão = new ConnectionFactory().getConnection();
     }
-    
+
 }

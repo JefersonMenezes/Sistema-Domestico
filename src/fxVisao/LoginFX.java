@@ -16,19 +16,16 @@ import javafx.stage.StageStyle;
  *
  * @author zion
  */
-public class LoginFX extends Application{
+public class LoginFX extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-         Parent root = FXMLLoader.load(getClass().getResource("LoginFX.fxml"));
-  
-            Scene scene = new Scene(root);
-            
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/LoginFX.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
-    
 
     public static void main(String[] args) {
         launch(args);

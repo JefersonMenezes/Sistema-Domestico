@@ -243,3 +243,7 @@ DEFAULT CHARACTER SET = utf8;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `financa`.`categoria` (`nome`, `tipo_categoria`) VALUES ('Investimentos','R'), ('Outros','R'),('Presente','R'),('Prêmios','R'),('Salário','R');
+INSERT INTO `financa`.`categoria` (`nome`, `tipo_categoria`) VALUES ('Alimentação','D'),('Educação','D'),('Lazer','D'),('Moradia','D'),('Pagamentos','D'),('Roupa','D'),('Saúde','D'),('Transporte','D');
+INSERT INTO `financa`.`tipo_conta` (`tipo`) VALUES ('Conta Corrente'),('Dinheiro'),('Poupança'),('Investimentos'),('Outros');

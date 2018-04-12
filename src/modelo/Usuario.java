@@ -15,17 +15,19 @@ public class Usuario {
     private String login;
     private String senha;
     private String nome;
+    private String email;
     private boolean ativo;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String login, String senha, String nome, boolean ativo) {
+    public Usuario(int id, String login, String senha, String nome, boolean ativo, String mail) {
         this.id = id;
         this.login = login;
         this.senha = senha;
         this.nome = nome;
         this.ativo = ativo;
+        this.email = mail;
     }
 
     
@@ -99,6 +101,15 @@ public class Usuario {
         this.ativo = ativo;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
     @Override
     public String toString() {
         return "Usuario{" + "id=" + id + ", login=" + login + ", senha=" + senha + ", nome=" + nome + ", ativo=" + ativo + '}';
