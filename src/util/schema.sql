@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`usuario` (
   `ativo` TINYINT(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -81,7 +80,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`categoria` (
   `tipo_categoria` CHAR(1) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -122,7 +120,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`tipo_conta` (
   `tipo` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -150,7 +147,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`conta` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -179,7 +175,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`despesa` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -208,7 +203,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`receita` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -236,7 +230,6 @@ CREATE TABLE IF NOT EXISTS `financa`.`transferencia` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
 DEFAULT CHARACTER SET = utf8;
 
 
@@ -247,3 +240,4 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 INSERT INTO `financa`.`categoria` (`nome`, `tipo_categoria`) VALUES ('Investimentos','R'), ('Outros','R'),('Presente','R'),('Prêmios','R'),('Salário','R');
 INSERT INTO `financa`.`categoria` (`nome`, `tipo_categoria`) VALUES ('Alimentação','D'),('Educação','D'),('Lazer','D'),('Moradia','D'),('Pagamentos','D'),('Roupa','D'),('Saúde','D'),('Transporte','D');
 INSERT INTO `financa`.`tipo_conta` (`tipo`) VALUES ('Conta Corrente'),('Dinheiro'),('Poupança'),('Investimentos'),('Outros');
+INSERT INTO `financa`.`usuario` (`id`,`login`,`senha`,`nome`,`email`,`ativo`)  VALUES (1, 'admin', '123','Jeferson Menezes','je_lionjuda@hotmail.com',true);

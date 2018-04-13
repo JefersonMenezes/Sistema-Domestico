@@ -25,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -82,9 +83,9 @@ public class MainFXController implements Initializable {
     private double totalContas;
     private double totalDespesas;
     private double totalReceitas;
+    private boolean running = false;
 
     private LocalDate dataCorrente;
-    
 
     public Usuario getUser() {
         return user;
@@ -111,6 +112,13 @@ public class MainFXController implements Initializable {
         listaDespesasPiza();
         listaReceitasPiza();
         listaTotais();
+
+    }
+    @FXML
+    private void atualiza() {
+        listaDespesasPiza();
+        listaReceitasPiza();
+        listaTotais();
     }
 
     private void listaDespesasPiza() {
@@ -133,6 +141,7 @@ public class MainFXController implements Initializable {
             pieDespesas.add(new PieChart.Data(despesasPiza.get(i).getCategoria().getNome(), despesasPiza.get(i).getValor()));
         }
         pcDespesas.setData(pieDespesas);
+        pcDespesas.getData().forEach(this::installTooltip);
     }
 
     private void montaPizaReceita() {
@@ -141,6 +150,8 @@ public class MainFXController implements Initializable {
             pieReceitas.add(new PieChart.Data(receitasPiza.get(i).getCategoria().getNome(), receitasPiza.get(i).getValor()));
         }
         pcReceitas.setData(pieReceitas);
+        pcReceitas.getData().forEach(this::installTooltip);
+
     }
 
     private void listaTotais() {
@@ -158,6 +169,7 @@ public class MainFXController implements Initializable {
         this.totalReceitas = Rdao.listaSomaReceitas(user.getId(), dates.get(0), dates.get(1));
 
         mostraTotais();
+        System.out.println("Listando....");
     }
 
     private void mostraTotais() {
@@ -169,7 +181,7 @@ public class MainFXController implements Initializable {
     private void pegaDataCorrente() {
         LocalDate localDate = LocalDate.now();
         this.dataCorrente = localDate;
-        
+
         DateDetails custom = new DateDetails(this.dataCorrente);
 
         lDataAtual.setText(custom.getDateFormatBR());
@@ -212,4 +224,35 @@ public class MainFXController implements Initializable {
         lUsuarioLogado.setText(user.getNome());
     }
 
+    public void installTooltip(PieChart.Data d) {
+
+        String msg = String.format("%s : %s", d.getName(), d.getPieValue());
+
+        Tooltip tt = new Tooltip(msg);
+        tt.setStyle("-fx-background-color: gray; -fx-text-fill: whitesmoke;");
+
+        Tooltip.install(d.getNode(), tt);
+    }
+
+    private void runClock() {
+        running = true;
+        new Thread() {
+            public void run() {
+                long last = System.nanoTime();
+                double delta = 0;
+                double ns = 1000000000000.0 / 1;
+                int count = 0;
+
+                while (running) {
+                    long now = System.nanoTime();
+                    delta += (now - last) / ns;
+                    last = now;
+
+                    while (delta >= 1) {
+                        listaTotais();
+                    }
+                }
+            }
+        }.start();
+    }
 }

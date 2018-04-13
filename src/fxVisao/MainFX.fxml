@@ -16,9 +16,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="600.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
+      <VBox prefHeight="800.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
          <effect>
             <DropShadow />
          </effect>
@@ -64,13 +64,13 @@
             </Pane>
          </children>
       </VBox>
-      <Pane prefHeight="60.0" prefWidth="1100.0" style="-fx-background-color: #f5f5f5;">
+      <Pane prefHeight="60.0" prefWidth="1300.0" style="-fx-background-color: #f5f5f5;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <FontAwesomeIconView glyphName="USER_CIRCLE_ALT" layoutX="1056.0" layoutY="39.0" size="30" />
-            <Label fx:id="lUsuarioLogado" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="861.0" layoutY="19.0" prefHeight="18.0" prefWidth="180.0" text="Usuário logado" />
+            <FontAwesomeIconView glyphName="USER_CIRCLE_ALT" layoutX="1243.0" layoutY="39.0" size="30" />
+            <Label fx:id="lUsuarioLogado" alignment="CENTER_RIGHT" contentDisplay="TOP" layoutX="1048.0" layoutY="19.0" prefHeight="18.0" prefWidth="180.0" text="Usuário logado" />
             <HBox layoutY="-1.0" prefHeight="60.0" prefWidth="215.0">
                <children>
                   <OctIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="FLAME" size="50" textOrigin="CENTER" wrappingWidth="40.0">
@@ -91,18 +91,18 @@
             </HBox>
          </children>
       </Pane>
-      <HBox layoutX="173.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="173.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #2298f2;">
                <children>
-                  <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="BANK" layoutX="4.0" layoutY="47.0" size="20" wrappingWidth="19.428571701049805" />
+                  <FontAwesomeIconView boundsType="LOGICAL_VERTICAL_CENTER" glyphName="BANK" layoutX="4.0" layoutY="47.0" onMouseClicked="#atualiza" size="20" wrappingWidth="19.428571701049805" />
                </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Saldo Acumulado" textFill="#a1a1a1" />
                   <Label fx:id="lTotalContas" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#2298f2">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -112,18 +112,18 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="375.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="423.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #32c787;">
                <children>
-                  <FontAwesomeIconView glyphName="DOWNLOAD" layoutX="7.0" layoutY="47.0" size="20" />
+                  <FontAwesomeIconView glyphName="DOWNLOAD" layoutX="7.0" layoutY="47.0" onMouseClicked="#atualiza" size="20" />
                </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Receitas" textFill="#a1a1a1" />
                   <Label fx:id="lTotalReceitas" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#32c787">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -133,18 +133,18 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="581.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="716.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #ff5652;">
                <children>
-                  <FontAwesomeIconView glyphName="UPLOAD" layoutX="7.0" layoutY="47.0" size="20" />
+                  <FontAwesomeIconView glyphName="UPLOAD" layoutX="7.0" layoutY="47.0" onMouseClicked="#atualiza" size="20" />
                </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Despesas" textFill="#a1a1a1" />
                   <Label fx:id="lTotalDespesas" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="46.0" prefWidth="150.0" text="R$ 2030,00" textFill="#ff5652">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -154,18 +154,18 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="783.0" layoutY="80.0" prefHeight="80.0" prefWidth="180.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="966.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #39bbb0;">
                <children>
-                  <FontAwesomeIconView glyphName="CREDIT_CARD" layoutX="4.0" layoutY="47.0" size="20" />
+                  <FontAwesomeIconView glyphName="CREDIT_CARD" layoutX="4.0" layoutY="47.0" onMouseClicked="#atualiza" size="20" />
                </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Cartão de crédito" textFill="#a1a1a1" />
-                  <Label fx:id="lTotalCartoes" alignment="TOP_CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="150.0" text="R$ 0,00" textFill="#39bbb0">
+                  <Label fx:id="lTotalCartoes" alignment="TOP_CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="150.0" text="R$ 0.00" textFill="#39bbb0">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -175,31 +175,31 @@
             <DropShadow />
          </effect>
       </HBox>
-      <Pane layoutX="173.0" layoutY="189.0" prefHeight="271.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="173.0" layoutY="189.0" prefHeight="300.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <PieChart fx:id="pcDespesas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="380.0" title="Despesas do Mês" />
+            <PieChart fx:id="pcDespesas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="300.0" prefWidth="450.0" title="Despesas do Mês" />
          </children>
       </Pane>
-      <Pane layoutX="581.0" layoutY="189.0" prefHeight="271.0" prefWidth="382.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="716.0" layoutY="189.0" prefHeight="300.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="380.0" title="Receitas do Mês" />
+            <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="300.0" prefWidth="450.0" title="Receitas do Mês" />
          </children>
       </Pane>
-      <Pane layoutX="1015.0" layoutY="80.0" prefHeight="380.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="1219.0" layoutY="80.0" prefHeight="410.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow color="#e3ca02" height="10.5" radius="4.41" width="9.14" />
          </effect>
          <children>
-            <Button layoutX="10.0" layoutY="121.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="219.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="319.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="20.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="135.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="238.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="331.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="35.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>
    </children>

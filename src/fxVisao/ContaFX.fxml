@@ -16,7 +16,7 @@
       <Label layoutX="152.0" layoutY="166.0" text="Saldo Inicial" />
       <ChoiceBox fx:id="cbCategoria" layoutX="103.0" layoutY="264.0" prefHeight="26.0" prefWidth="181.0" />
       <Label layoutX="178.0" layoutY="239.0" text="Tipo" />
-      <CheckBox fx:id="cbJava" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="245.0" text="Incluir na Soma da Tela Inicial" />
+      <CheckBox fx:id="cbSoma" layoutX="85.0" layoutY="337.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="245.0" selected="true" text="Incluir na Soma da Tela Inicial" />
       <Pane prefHeight="92.0" prefWidth="376.0" style="-fx-background-color: #0066ff;" styleClass="mainFxmlClass">
          <children>
             <Button layoutX="295.0" layoutY="30.0" maxWidth="70.0" mnemonicParsing="false" onAction="#incluirConta" prefHeight="35.0" styleClass="btSalvar" text="Salvar" />

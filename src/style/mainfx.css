@@ -20,5 +20,39 @@
     -fx-background-radius: 25px;
     -fx-font-size: 12pt;
 }
+/*Gráfico Pizza*/
+.chart {
+    -fx-clockwise: false;
+    -fx-pie-label-visible: true;
+    -fx-label-line-length: 8;
+    -fx-start-angle: 90;
+    -fx-legend-side: botton;
+}
 
+.chart-pie-label {
+    -fx-font-size: 9px;
+    -fx-font-family: Roboto Light;
+}
+
+.chart-pie-label-line {
+    -fx-fill: red;
+}
+
+.chart-title {
+    -fx-font-family: Roboto;
+    -fx-font-size: 15px;
+}
+
+.chart-legend-item-symbol {
+    -fx-shape: "M0 -3.5 v7 l 4 -3.5z";
+}
+
+.chart-legend {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 4px;
+    -fx-border-color: #696969;
+    -fx-border-width: 1;
+    -fx-border-radius: 4px;
+    -fx-font-size: 9px;
+}
 /* -fx-border-radius: 50px; */

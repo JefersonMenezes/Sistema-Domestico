@@ -41,7 +41,7 @@ public class ContaFXController implements Initializable {
     @FXML
     private ChoiceBox<TipoConta> cbCategoria;
     @FXML
-    private CheckBox cbJava;
+    private CheckBox cbSoma;
 
     public ContaFXController() {
     }
@@ -69,7 +69,7 @@ public class ContaFXController implements Initializable {
     public int tipoContaSelecionada() {
         TipoConta tipoConta = cbCategoria.getSelectionModel().getSelectedItem();
         System.out.println("Tipo Conta: ID=" + tipoConta.getId() + " - Nome=" + tipoConta.getTipo());
-        System.err.println("Acionado: " + cbJava.selectedProperty().getValue());
+        System.err.println("Acionado: " + cbSoma.selectedProperty().getValue());
         return 1;
     }
 
@@ -80,12 +80,10 @@ public class ContaFXController implements Initializable {
                 conta.setNome(nome.getText());
                 conta.setSaldoInicial(Double.valueOf(SaldoInicial.getText()));
                 TipoConta tipo = new TipoConta();
+
                 tipo.setId(cbCategoria.getSelectionModel().getSelectedItem().getId());
                 conta.setTipoConta(tipo);
-
-                user = new Usuario();
-                user.setId(1);
-                user.setNome("Jeferson Menezes");
+                conta.setIncluiSoma(cbSoma.selectedProperty().getValue());
 
                 conta.setUsuario(user);
 
@@ -93,6 +91,7 @@ public class ContaFXController implements Initializable {
                 dao.inserir(conta);
 
                 alerta.getInformacao("Sucesso", "Cabecalho", "Conta " + nome.getText() + "  Cadastrada com sucesso!");
+                limpaCampos();
             } else {
                 alerta.getAlert("Atenção", "Verifique", "O tipo de Conta é obrigatório!");
             }
@@ -100,5 +99,11 @@ public class ContaFXController implements Initializable {
             alerta.getAlert("Atenção", "Verifique", "O Todos os campos são obrigatório!");
 
         }
+    }
+
+    private void limpaCampos() {
+        nome.setText("");
+        SaldoInicial.setText("");
+        cbCategoria.getSelectionModel().select(-1);
     }
 }
