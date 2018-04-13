@@ -4,6 +4,9 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -91,7 +94,7 @@
             </HBox>
          </children>
       </Pane>
-      <HBox layoutX="173.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="173.0" layoutY="68.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #2298f2;">
                <children>
@@ -112,7 +115,7 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="423.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="423.0" layoutY="68.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #32c787;">
                <children>
@@ -133,7 +136,7 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="716.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="716.0" layoutY="68.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #ff5652;">
                <children>
@@ -154,7 +157,7 @@
             <DropShadow />
          </effect>
       </HBox>
-      <HBox layoutX="966.0" layoutY="80.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+      <HBox layoutX="966.0" layoutY="68.0" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
          <children>
             <Pane prefHeight="80.0" prefWidth="130.0" style="-fx-background-color: #39bbb0;">
                <children>
@@ -175,20 +178,20 @@
             <DropShadow />
          </effect>
       </HBox>
-      <Pane layoutX="173.0" layoutY="189.0" prefHeight="300.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="173.0" layoutY="157.0" prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <PieChart fx:id="pcDespesas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="300.0" prefWidth="450.0" title="Despesas do Mês" />
+            <PieChart fx:id="pcDespesas" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="250.0" prefWidth="450.0" title="Despesas do Mês" />
          </children>
       </Pane>
-      <Pane layoutX="716.0" layoutY="189.0" prefHeight="300.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="716.0" layoutY="157.0" prefHeight="250.0" prefWidth="450.0" style="-fx-background-color: #ffffff;">
          <effect>
             <DropShadow />
          </effect>
          <children>
-            <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="300.0" prefWidth="450.0" title="Receitas do Mês" />
+            <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="250.0" prefWidth="450.0" title="Receitas do Mês" />
          </children>
       </Pane>
       <Pane layoutX="1219.0" layoutY="80.0" prefHeight="410.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
@@ -200,6 +203,21 @@
             <Button layoutX="10.0" layoutY="238.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
             <Button layoutX="10.0" layoutY="331.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
             <Button layoutX="10.0" layoutY="35.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+         </children>
+      </Pane>
+      <Pane layoutX="173.0" layoutY="420.0" prefHeight="315.0" prefWidth="994.0">
+         <children>
+            <LineChart fx:id="lcMensal" layoutY="2.0" prefHeight="315.0" prefWidth="994.0" style="-fx-background-color: #ffffff;">
+              <xAxis>
+                <CategoryAxis prefHeight="0.0" prefWidth="933.0" side="BOTTOM" fx:id="x" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="y" side="LEFT" />
+              </yAxis>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </LineChart>
          </children>
       </Pane>
    </children>

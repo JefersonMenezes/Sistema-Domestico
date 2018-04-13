@@ -26,7 +26,7 @@
     -fx-pie-label-visible: true;
     -fx-label-line-length: 8;
     -fx-start-angle: 90;
-    -fx-legend-side: botton;
+    -fx-legend-side: right;
 }
 
 .chart-pie-label {
