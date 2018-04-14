@@ -11,14 +11,16 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Categoria;
 import modelo.Receita;
-
 
 /**
  *
@@ -71,8 +73,8 @@ public class ReceitaDAO {
             }
         }
     }
-    
-       public List<Receita> getReceitasCategoria(int idUser) {
+
+    public List<Receita> getReceitasCategoria(int idUser) {
         String sql = "SELECT it.nome as nome, sum(es.valor) as valor from  usuario as ite inner join categoria as it inner join receita as es on it.id = es.categoria_id where ite.id = ? group by (nome)";
         try {
             List<Receita> receitas = new ArrayList<Receita>();
@@ -81,14 +83,14 @@ public class ReceitaDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-            Receita receita = new Receita();
-            receita.setValor(rs.getDouble("valor"));
-            
-            Categoria categoria = new Categoria();
-            categoria.setNome(rs.getString("nome"));
-            receita.setCategoria(categoria);
-            
-            receitas.add(receita);
+                Receita receita = new Receita();
+                receita.setValor(rs.getDouble("valor"));
+
+                Categoria categoria = new Categoria();
+                categoria.setNome(rs.getString("nome"));
+                receita.setCategoria(categoria);
+
+                receitas.add(receita);
             }
             rs.close();
             stmt.close();
@@ -100,9 +102,9 @@ public class ReceitaDAO {
     }
 
     public double listaSomaReceitas(int idUser, LocalDate inicio, LocalDate fim) {
-         String sql  = "SELECT sum(valor) as valor FROM financa.receita JOIN financa.conta ON conta_id = conta.id where usuario_id = ? and data between ? and ?";
-        
-         try {
+        String sql = "SELECT sum(valor) as valor FROM financa.receita JOIN financa.conta ON conta_id = conta.id where usuario_id = ? and data between ? and ?";
+
+        try {
             double total = 0;
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, idUser);
@@ -121,7 +123,30 @@ public class ReceitaDAO {
         }
     }
 
-    
+    public List<Receita> getGroupbyData(int idUser, LocalDate ldInicio, LocalDate ldFim) {
+        String sql = "SELECT sum(receita.valor) as soma_valor, data FROM financa.receita INNER JOIN usuario WHERE usuario.id = ? and data between ? and ? group by data order by data asc";
+        try {
+            List<Receita> receitas = new ArrayList<Receita>();
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, idUser);
+            stmt.setDate(2, Date.valueOf(ldInicio));
+            stmt.setDate(3, Date.valueOf(ldFim));
 
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Receita receita = new Receita();
+                receita.setValor(rs.getDouble("soma_valor"));
+                Instant instant = Instant.ofEpochMilli(rs.getDate("data").getTime());
+
+                receita.setData(LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate());
+
+                receitas.add(receita);
+            }
+            return receitas;
+
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
 
 }

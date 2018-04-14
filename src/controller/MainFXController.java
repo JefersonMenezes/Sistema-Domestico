@@ -20,10 +20,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
@@ -76,15 +73,20 @@ public class MainFXController implements Initializable {
 
     @FXML
     private StackPane stack;
-        
-    @FXML
-    private LineChart<?, ?> lcMensal;
 
     @FXML
-    private CategoryAxis x;
+    private NumberAxis xAxis;
 
     @FXML
-    private NumberAxis y;
+    private NumberAxis yAxis;
+
+    @FXML
+    private LineChart<Number, Number> lcMensal;
+
+    XYChart.Series seriesReceitas;
+    XYChart.Series seriesDespesas;
+    private List<Receita> receitasLineDados;
+    private List<Despesa> despesasLineDados;
 
     private List<Receita> receitasPiza;
     private List<Despesa> despesasPiza;
@@ -92,16 +94,15 @@ public class MainFXController implements Initializable {
 
     ObservableList<PieChart.Data> pieDespesas;
     ObservableList<PieChart.Data> pieReceitas;
-    
-    XYChart.Series despesasLine;
-    XYChart.Series receitasLine;
 
     private double totalContas;
     private double totalDespesas;
     private double totalReceitas;
-    private boolean running = false;
 
     private LocalDate dataCorrente;
+    private DateDetails dataDetails;
+
+    ;
 
     public Usuario getUser() {
         return user;
@@ -131,6 +132,7 @@ public class MainFXController implements Initializable {
         listaValoresLineGrafico();
 
     }
+
     @FXML
     private void atualiza() {
         listaDespesasPiza();
@@ -152,9 +154,45 @@ public class MainFXController implements Initializable {
 
         montaPizaReceita();
     }
-    
-    private void listaValoresLineGrafico(){
+
+    private void listaValoresLineGrafico() {
+        DateDetails dNow = new DateDetails(dataCorrente);
+        List<LocalDate> dates = new ArrayList<LocalDate>();
+        dates = dNow.getMinMaxMes();
+
+        ReceitaDAO r = new ReceitaDAO();
+        receitasLineDados = r.getGroupbyData(user.getId(), dates.get(0), dates.get(1));
+
+        DespesaDAO d = new DespesaDAO();
+        despesasLineDados = d.getGroupbyData(user.getId(), dates.get(0), dates.get(1));
+
         montaGraficoLinha();
+    }
+
+    private void montaGraficoLinha() {
+        //xAxis = new NumberAxis();
+        //yAxis = new NumberAxis();
+        lcMensal.getData().clear();
+        seriesDespesas = null;
+        seriesReceitas = null;
+
+        seriesReceitas = new XYChart.Series();
+        seriesReceitas.setName("Receitas");
+
+        seriesDespesas = new XYChart.Series();
+        seriesDespesas.setName("Despesas");
+        
+
+        for (int i = 0; i < receitasLineDados.size(); i++) {
+            seriesReceitas.getData().add(new XYChart.Data(receitasLineDados.get(i).getData().getDayOfMonth(), receitasLineDados.get(i).getValor()));
+        }
+
+        for (int i = 0; i < despesasLineDados.size(); i++) {
+            seriesDespesas.getData().add(new XYChart.Data(despesasLineDados.get(i).getData().getDayOfMonth(), despesasLineDados.get(i).getValor()));
+        }
+        lcMensal.getData().add(seriesReceitas);
+        lcMensal.getData().add(seriesDespesas);
+
     }
 
     private void montaPizaDespesa() {
@@ -175,32 +213,7 @@ public class MainFXController implements Initializable {
         pcReceitas.getData().forEach(this::installTooltip);
 
     }
-    
-    private void montaGraficoLinha(){
-    
-        lcMensal.getData().clear();
-        despesasLine = new XYChart.Series();
-        
-        despesasLine.getData().add(new XYChart.Data("1", 23));
-        despesasLine.getData().add(new XYChart.Data("2", 14));
-        despesasLine.getData().add(new XYChart.Data("3", 35));
-        despesasLine.getData().add(new XYChart.Data("4", 23));
-        despesasLine.getData().add(new XYChart.Data("5", 120));
-        despesasLine.getData().add(new XYChart.Data("6", 78));
-        
-        receitasLine = new XYChart.Series();
-        
-        receitasLine.getData().add(new XYChart.Data("1",15));
-        receitasLine.getData().add(new XYChart.Data("2",20));
-        receitasLine.getData().add(new XYChart.Data("3",10));
-        receitasLine.getData().add(new XYChart.Data("4",15));
-        
-        lcMensal.getData().addAll(despesasLine,receitasLine);
-        
-                
-    }
-    
-    
+
     private void listaTotais() {
         DateDetails dNow = new DateDetails(dataCorrente);
         List<LocalDate> dates = new ArrayList<LocalDate>();
@@ -236,12 +249,6 @@ public class MainFXController implements Initializable {
 
     private void mostraData() {
         lDataAtual.setText(String.valueOf(this.dataCorrente));
-    }
-
-    private void addReceita() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/DespesaFX.fxml"));
-
-        ///-------------------------------------------------------
     }
 
     @FXML
@@ -281,25 +288,4 @@ public class MainFXController implements Initializable {
         Tooltip.install(d.getNode(), tt);
     }
 
-    private void runClock() {
-        running = true;
-        new Thread() {
-            public void run() {
-                long last = System.nanoTime();
-                double delta = 0;
-                double ns = 1000000000000.0 / 1;
-                int count = 0;
-
-                while (running) {
-                    long now = System.nanoTime();
-                    delta += (now - last) / ns;
-                    last = now;
-
-                    while (delta >= 1) {
-                        listaTotais();
-                    }
-                }
-            }
-        }.start();
-    }
 }

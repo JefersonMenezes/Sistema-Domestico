@@ -4,7 +4,6 @@
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import de.jensd.fx.glyphs.octicons.OctIconView?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
@@ -19,9 +18,9 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="740.0" prefWidth="1300.0" style="-fx-background-color: #f5f5f5; -fx-border-color: #ffffff;" styleClass="anchorPrincipal" stylesheets="@../style/mainfx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="800.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
+      <VBox prefHeight="740.0" prefWidth="100.0" style="-fx-background-color: #f5f5f5;" styleClass="vPaneMenu">
          <effect>
             <DropShadow />
          </effect>
@@ -165,8 +164,8 @@
                </children></Pane>
             <VBox prefHeight="81.0" prefWidth="244.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="43.0" prefWidth="150.0" text="Cartão de crédito" textFill="#a1a1a1" />
-                  <Label fx:id="lTotalCartoes" alignment="TOP_CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="150.0" text="R$ 0.00" textFill="#39bbb0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="38.0" prefWidth="158.0" text="Cartão de crédito" textFill="#a1a1a1" />
+                  <Label fx:id="lTotalCartoes" alignment="TOP_CENTER" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="42.0" prefWidth="158.0" text="R$ 0.00" textFill="#39bbb0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -205,14 +204,14 @@
             <Button layoutX="10.0" layoutY="35.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>
-      <Pane layoutX="173.0" layoutY="420.0" prefHeight="315.0" prefWidth="994.0">
+      <Pane layoutX="173.0" layoutY="420.0" prefHeight="270.0" prefWidth="994.0">
          <children>
-            <LineChart fx:id="lcMensal" layoutY="2.0" prefHeight="315.0" prefWidth="994.0" style="-fx-background-color: #ffffff;">
+            <LineChart fx:id="lcMensal" layoutY="2.0" prefHeight="270.0" prefWidth="994.0" style="-fx-background-color: #ffffff;" title="grafico linha">
               <xAxis>
-                <CategoryAxis prefHeight="0.0" prefWidth="933.0" side="BOTTOM" fx:id="x" />
+                <NumberAxis label="Dias do Mês" prefHeight="10.0" prefWidth="933.0" side="BOTTOM" fx:id="xAxis" />
               </xAxis>
               <yAxis>
-                <NumberAxis fx:id="y" side="LEFT" />
+                <NumberAxis fx:id="yAxis" label="Valores" side="LEFT" />
               </yAxis>
                <effect>
                   <DropShadow />
