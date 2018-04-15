@@ -5,19 +5,40 @@
  */
 package fxVisao;
 
+import controller.TransferenciaFXController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modelo.Usuario;
 
 /**
  *
  * @author zion
  */
-public class Transferencia extends Application {
-    
+public class TransferenciaFX extends Application {
+
+    private static Usuario user;
+
+    public static void setUser(Usuario usuario) {
+        TransferenciaFX.user = usuario;
+    }
+
+    public static Usuario getUser() {
+        return TransferenciaFX.user;
+    }
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("/fxVisao/TransferenciaFX.fxml"));
+        fxmlloader.setController(new TransferenciaFXController(user));
+
+        stage.setScene(new Scene(fxmlloader.load()));
+        stage.show();
+    }
+    /*
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxVisao/TransferenciaFX.fxml"));
@@ -27,12 +48,12 @@ public class Transferencia extends Application {
             stage.setScene(scene);
             stage.show();
     }
-
+     */
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -13,8 +13,8 @@
    <children>
       <Label layoutX="139.0" layoutY="96.0" text="Insira o valor" />
       <DatePicker fx:id="dpData" editable="false" layoutX="103.0" layoutY="176.0" prefHeight="26.0" prefWidth="183.0" />
-      <TextField fx:id="tfDescricao" layoutX="98.0" layoutY="236.0" prefHeight="26.0" prefWidth="189.0" />
-      <TextField fx:id="tfValor" layoutX="102.0" layoutY="122.0" prefHeight="26.0" prefWidth="183.0" />
+      <TextField fx:id="tfDescricao" alignment="CENTER" layoutX="98.0" layoutY="236.0" prefHeight="26.0" prefWidth="189.0" />
+      <TextField fx:id="tfValor" alignment="CENTER" layoutX="102.0" layoutY="122.0" prefHeight="26.0" prefWidth="183.0" />
       <Label layoutX="162.0" layoutY="212.0" text="Descrição" />
       <ChoiceBox fx:id="cbCategoria" layoutX="98.0" layoutY="297.0" prefHeight="26.0" prefWidth="189.0" />
       <ChoiceBox fx:id="cbConta" layoutX="98.0" layoutY="356.0" prefHeight="26.0" prefWidth="189.0" />

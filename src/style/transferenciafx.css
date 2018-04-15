@@ -7,7 +7,7 @@
 }
 
 .paneTitulo{
-    -fx-background-color:#145daa;
+    -fx-background-color:#9933cc;
 }
 
 .titulo {
@@ -20,7 +20,7 @@
     -fx-text-fill:#ffffff;
 }
 .btSalvar {
-    -fx-background-color:#0f4c8c;
+    -fx-background-color:#69039b;
     -fx-font-size:12px;
     -fx-text-fill:#ffffff;
 }

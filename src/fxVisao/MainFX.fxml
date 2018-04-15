@@ -193,22 +193,26 @@
             <PieChart fx:id="pcReceitas" layoutX="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#atualiza" prefHeight="250.0" prefWidth="450.0" title="Receitas do Mês" />
          </children>
       </Pane>
-      <Pane layoutX="1219.0" layoutY="80.0" prefHeight="410.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
+      <Pane layoutX="1217.0" layoutY="68.0" prefHeight="405.0" prefWidth="60.0" style="-fx-background-color: #ffffff;">
          <effect>
-            <DropShadow color="#e3ca02" height="10.5" radius="4.41" width="9.14" />
+            <DropShadow color="#080707" height="9.82" radius="4.24" width="9.14" />
          </effect>
          <children>
-            <Button layoutX="10.0" layoutY="135.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="238.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="331.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
-            <Button layoutX="10.0" layoutY="35.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="97.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToReceita" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #32c787;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="183.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToDespesa" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #ff5652;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="266.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #39bbb0;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="14.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToConta" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #2298f2;" styleClass="button-plus" text="+" textAlignment="CENTER" />
+            <Button layoutX="10.0" layoutY="343.0" maxHeight="40.0" maxWidth="40.0" minWidth="40.0" mnemonicParsing="false" onMouseClicked="#goToTransferencia" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #9933cc;" styleClass="button-plus" text="+" textAlignment="CENTER" />
          </children>
       </Pane>
-      <Pane layoutX="173.0" layoutY="420.0" prefHeight="270.0" prefWidth="994.0">
+      <Pane layoutX="173.0" layoutY="420.0" prefHeight="270.0" prefWidth="998.0">
          <children>
-            <LineChart fx:id="lcMensal" layoutY="2.0" prefHeight="270.0" prefWidth="994.0" style="-fx-background-color: #ffffff;" title="grafico linha">
+            <LineChart fx:id="lcMensal" layoutX="3.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="270.0" prefWidth="992.0" style="-fx-background-color: #ffffff;" title="grafico linha">
               <xAxis>
-                <NumberAxis label="Dias do Mês" prefHeight="10.0" prefWidth="933.0" side="BOTTOM" fx:id="xAxis" />
+                <NumberAxis label="Dias do Mês" prefHeight="10.0" prefWidth="933.0" tickLength="4.0" fx:id="xAxis">
+                     <tickLabelFont>
+                        <Font size="10.0" />
+                     </tickLabelFont></NumberAxis>
               </xAxis>
               <yAxis>
                 <NumberAxis fx:id="yAxis" label="Valores" side="LEFT" />

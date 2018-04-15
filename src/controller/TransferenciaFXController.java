@@ -8,6 +8,7 @@ package controller;
 import dao.ContaDAO;
 import dao.TransferenciaDAO;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -37,42 +38,48 @@ public class TransferenciaFXController implements Initializable {
 
     @FXML
     private DatePicker dpData;
-
     @FXML
     private TextField tfDescricao;
-
     @FXML
     private TextField tfValor;
-
     @FXML
     private ChoiceBox<Conta> cbOrigem;
-
     @FXML
     private ChoiceBox<Conta> cbDestino;
-
     @FXML
     private Label lVoltar;
 
+    public TransferenciaFXController() {
+    }
+
+    public TransferenciaFXController(Usuario user) {
+        this.user = user;
+    }
+
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         listarContas();
+        initCampos();
     }
 
     public void listarContas() {
+        Usuario usuario = new Usuario();
+        usuario.setId(1);
+        usuario.setNome("Jeferson Menezes");
         ContaDAO dao = new ContaDAO();
-        user = new Usuario();
-        user.setId(1);
-        user.setNome("Jeferson Menezes");
-
-        contas = dao.listaContasUser(user);
+        contas = dao.listaContasUser(usuario);
         obsContas = FXCollections.observableArrayList(contas);
         cbOrigem.setItems(obsContas);
         cbDestino.setItems(obsContas);
     }
 
+    private void initCampos(){
+        dpData.setValue(LocalDate.now());
+    }
     public void registraTransferencia() {
         if (!tfValor.getText().equals("") && !tfDescricao.getText().equals("")) {
             if (cbOrigem.getSelectionModel().getSelectedIndex() != -1 && cbDestino.getSelectionModel().getSelectedIndex() != -1) {

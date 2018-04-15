@@ -11,6 +11,7 @@ import dao.ReceitaDAO;
 import fxVisao.ContaFX;
 import fxVisao.DespesaFX;
 import fxVisao.ReceitaFX;
+import fxVisao.TransferenciaFX;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -44,47 +45,35 @@ public class MainFXController implements Initializable {
 
     @FXML
     private Label lDataAtual;
-
     @FXML
     private Label lTotalContas;
-
     @FXML
     private Label lTotalReceitas;
-
     @FXML
     private Label lTotalDespesas;
-
     @FXML
     private Label lTotalCartoes;
-
     @FXML
     private Label labelOlaMundo;
-
     @FXML
     private Label lSair;
     @FXML
     private Label lUsuarioLogado;
-
     @FXML
     private PieChart pcDespesas;
-
     @FXML
     private PieChart pcReceitas;
-
     @FXML
     private StackPane stack;
-
     @FXML
     private NumberAxis xAxis;
-
     @FXML
     private NumberAxis yAxis;
-
     @FXML
-    private LineChart<Number, Number> lcMensal;
+    private LineChart<Integer, Number> lcMensal;
 
-    XYChart.Series seriesReceitas;
-    XYChart.Series seriesDespesas;
+    XYChart.Series<Integer, Number> seriesReceitas;
+    XYChart.Series<Integer, Number> seriesDespesas;
     private List<Receita> receitasLineDados;
     private List<Despesa> despesasLineDados;
 
@@ -170,16 +159,14 @@ public class MainFXController implements Initializable {
     }
 
     private void montaGraficoLinha() {
-        //xAxis = new NumberAxis();
-        //yAxis = new NumberAxis();
         lcMensal.getData().clear();
         seriesDespesas = null;
         seriesReceitas = null;
 
-        seriesReceitas = new XYChart.Series();
+        seriesReceitas = new XYChart.Series<Integer, Number>();
         seriesReceitas.setName("Receitas");
 
-        seriesDespesas = new XYChart.Series();
+        seriesDespesas = new XYChart.Series<Integer, Number>();
         seriesDespesas.setName("Despesas");
         
 
@@ -188,7 +175,7 @@ public class MainFXController implements Initializable {
         }
 
         for (int i = 0; i < despesasLineDados.size(); i++) {
-            seriesDespesas.getData().add(new XYChart.Data(despesasLineDados.get(i).getData().getDayOfMonth(), despesasLineDados.get(i).getValor()));
+            seriesDespesas.getData().add(new XYChart.Data<Integer, Number>(despesasLineDados.get(i).getData().getDayOfMonth(), despesasLineDados.get(i).getValor()));
         }
         lcMensal.getData().add(seriesReceitas);
         lcMensal.getData().add(seriesDespesas);
@@ -267,6 +254,11 @@ public class MainFXController implements Initializable {
     void goToConta() throws IOException {
         ContaFX.setUser(user);
         new ContaFX().start(new Stage());
+    }
+    @FXML
+    void goToTransferencia() throws IOException {
+        TransferenciaFX.setUser(user);
+        new TransferenciaFX().start(new Stage());
     }
 
     @FXML

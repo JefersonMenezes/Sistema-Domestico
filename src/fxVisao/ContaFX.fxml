@@ -11,8 +11,8 @@
 <AnchorPane id="AnchorPane" prefHeight="410.0" prefWidth="376.0" styleClass="mainFxmlClass" stylesheets="@../style/contafx.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="174.0" layoutY="102.0" text="Titulo" />
-      <TextField fx:id="nome" layoutX="109.0" layoutY="125.0" />
-      <TextField fx:id="SaldoInicial" layoutX="109.0" layoutY="192.0" />
+      <TextField fx:id="nome" alignment="CENTER" layoutX="109.0" layoutY="125.0" />
+      <TextField fx:id="SaldoInicial" alignment="CENTER" layoutX="109.0" layoutY="192.0" />
       <Label layoutX="152.0" layoutY="166.0" text="Saldo Inicial" />
       <ChoiceBox fx:id="cbCategoria" layoutX="103.0" layoutY="264.0" prefHeight="26.0" prefWidth="181.0" />
       <Label layoutX="178.0" layoutY="239.0" text="Tipo" />
