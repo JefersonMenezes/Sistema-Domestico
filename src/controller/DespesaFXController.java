@@ -26,7 +26,7 @@ import modelo.Conta;
 import modelo.Despesa;
 import modelo.Usuario;
 import util.Alertas;
-
+import util.MaskTextField;
 /**
  * FXML Controller class
  *
@@ -48,7 +48,7 @@ public class DespesaFXController implements Initializable {
     @FXML
     private TextField tfDescricao;
     @FXML//
-    private TextField tfValor;
+    private MaskTextField tfValor;
     @FXML
     private ChoiceBox<Categoria> cbCategoria;
     @FXML
@@ -87,6 +87,8 @@ public class DespesaFXController implements Initializable {
         listarCategorias();
         listarContas();
         initCampos();
+        tfValor.setMask("N!.NN");
+        
         //mostraUsuário();
     }
 

@@ -23,6 +23,7 @@ import modelo.Conta;
 import modelo.Transferencia;
 import modelo.Usuario;
 import util.Alertas;
+import util.MaskTextField;
 
 /**
  * FXML Controller class
@@ -41,7 +42,7 @@ public class TransferenciaFXController implements Initializable {
     @FXML
     private TextField tfDescricao;
     @FXML
-    private TextField tfValor;
+    private MaskTextField tfValor;
     @FXML
     private ChoiceBox<Conta> cbOrigem;
     @FXML
@@ -56,7 +57,6 @@ public class TransferenciaFXController implements Initializable {
         this.user = user;
     }
 
-    
     /**
      * Initializes the controller class.
      */
@@ -64,6 +64,8 @@ public class TransferenciaFXController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         listarContas();
         initCampos();
+        tfValor.setMask("N!.NN");
+
     }
 
     public void listarContas() {
@@ -77,13 +79,18 @@ public class TransferenciaFXController implements Initializable {
         cbDestino.setItems(obsContas);
     }
 
-    private void initCampos(){
+    private void initCampos() {
         dpData.setValue(LocalDate.now());
     }
+
     public void registraTransferencia() {
         if (!tfValor.getText().equals("") && !tfDescricao.getText().equals("")) {
             if (cbOrigem.getSelectionModel().getSelectedIndex() != -1 && cbDestino.getSelectionModel().getSelectedIndex() != -1) {
-                salvaTransferencia();
+                if (cbOrigem.getSelectionModel().getSelectedIndex() == cbDestino.getSelectionModel().getSelectedIndex()) {
+                    salvaTransferencia();
+                } else {
+                    alerta.getErro("Impossivel", "Ops!", "Para a mesma conta não é traferència");
+                }
             } else {
                 alerta.getAlert("Atenção", "Selecione", "Selecione as Contas!");
             }
@@ -99,22 +106,26 @@ public class TransferenciaFXController implements Initializable {
         acao.setData(dpData.getValue());
         acao.setContaOrigem(cbOrigem.getSelectionModel().getSelectedItem());
         acao.setContaDestino(cbDestino.getSelectionModel().getSelectedItem());
-
-        if (acao.getValor() > acao.getContaOrigem().getSaldoInicial()) {
-            alerta.getAlert("Atenção", "Saldo insuficiente", "Não posui valor suficiente!");
-
+        if (cbOrigem.getSelectionModel().getSelectedItem().getId() == cbDestino.getSelectionModel().getSelectedItem().getId()) {
+            alerta.getErro("Ipossível", "Ops!", "São as mesmas contas, Altere.");
         } else {
-            TransferenciaDAO dao = new TransferenciaDAO();
-            dao.inserir(acao);
-            
-            ContaDAO d = new ContaDAO();
-            d.setSubtraiSaldo(acao.getValor(), acao.getContaOrigem().getId());
-            d.setSomaSaldo(acao.getValor(), acao.getContaDestino().getId());
-            
-            alerta.getInformacao("Sucesso", "Transação Efetuada", "Trasferido "+acao.getValor()+" da Conta "+acao.getContaOrigem().getNome()+" para "+acao.getContaDestino().getNome());
-            
-            limpaCampos();
-            listarContas();
+             if (acao.getValor() > acao.getContaOrigem().getSaldoInicial()) {
+                alerta.getAlert("Atenção", "Saldo insuficiente", "Não posui valor suficiente!");
+            } else {
+
+                TransferenciaDAO dao = new TransferenciaDAO();
+                dao.inserir(acao);
+
+                ContaDAO d = new ContaDAO();
+                d.setSubtraiSaldo(acao.getValor(), acao.getContaOrigem().getId());
+                d.setSomaSaldo(acao.getValor(), acao.getContaDestino().getId());
+
+                alerta.getInformacao("Sucesso", "Transação Efetuada", "Trasferido " + acao.getValor() + " da Conta " + acao.getContaOrigem().getNome() + " para " + acao.getContaDestino().getNome());
+
+                limpaCampos();
+                listarContas();
+
+            }
         }
     }
 

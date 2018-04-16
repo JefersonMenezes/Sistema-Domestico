@@ -26,6 +26,7 @@ import modelo.Conta;
 import modelo.Receita;
 import modelo.Usuario;
 import util.Alertas;
+import util.MaskTextField;
 
 /**
  * FXML Controller class
@@ -50,7 +51,7 @@ public class ReceitaFXController implements Initializable {
     @FXML
     private TextField tfDescricao;
     @FXML
-    private TextField tfValor;
+    private MaskTextField tfValor;
     @FXML
     private CheckBox cbRecebido;
     @FXML
@@ -70,10 +71,9 @@ public class ReceitaFXController implements Initializable {
 
     public ReceitaFXController(Usuario user) {
         this.user = user;
+        
     }
     
-    
-
     /**
      * Initializes the controller class.
      */
@@ -82,6 +82,7 @@ public class ReceitaFXController implements Initializable {
         listarContas();
         listarCategorias();
         initCampos();
+        tfValor.setMask("N!.NN");
     }
     
     private void initCampos(){

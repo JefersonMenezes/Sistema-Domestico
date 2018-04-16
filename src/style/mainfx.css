@@ -60,6 +60,6 @@
 .default-color0.chart-series-line { -fx-stroke: #59d334; }
 .default-color1.chart-series-line { -fx-stroke: #FF0000; }
 
-.default-color0.chart-line-symbol {-fx-background-color: #59d334, #59d334;}
-.default-color1.chart-line-symbol {-fx-background-color: #FF0000, #FF0000;}
+.default-color0.chart-line-symbol {-fx-background-color: #59d334, #ffffff;}
+.default-color1.chart-line-symbol {-fx-background-color: #FF0000, #ffffff;}
 /* -fx-border-radius: 50px; */
