@@ -74,12 +74,14 @@ public class ReceitaDAO {
         }
     }
 
-    public List<Receita> getReceitasCategoria(int idUser) {
-        String sql = "SELECT it.nome as nome, sum(es.valor) as valor from  usuario as ite inner join categoria as it inner join receita as es on it.id = es.categoria_id where ite.id = ? group by (nome)";
+    public List<Receita> getReceitasCategoria(int idUser, LocalDate inicio, LocalDate fim) {
+        String sql = "SELECT it.nome as nome, sum(es.valor) as valor from  usuario as ite inner join categoria as it inner join receita as es on it.id = es.categoria_id where ite.id = ? and data between ? and ? group by nome";
         try {
             List<Receita> receitas = new ArrayList<Receita>();
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, idUser);
+            stmt.setDate(2, Date.valueOf(inicio));
+            stmt.setDate(3, Date.valueOf(fim));
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

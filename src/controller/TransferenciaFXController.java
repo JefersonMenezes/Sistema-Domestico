@@ -86,11 +86,8 @@ public class TransferenciaFXController implements Initializable {
     public void registraTransferencia() {
         if (!tfValor.getText().equals("") && !tfDescricao.getText().equals("")) {
             if (cbOrigem.getSelectionModel().getSelectedIndex() != -1 && cbDestino.getSelectionModel().getSelectedIndex() != -1) {
-                if (cbOrigem.getSelectionModel().getSelectedIndex() == cbDestino.getSelectionModel().getSelectedIndex()) {
-                    salvaTransferencia();
-                } else {
-                    alerta.getErro("Impossivel", "Ops!", "Para a mesma conta não é traferència");
-                }
+                salvaTransferencia();
+
             } else {
                 alerta.getAlert("Atenção", "Selecione", "Selecione as Contas!");
             }
@@ -100,32 +97,31 @@ public class TransferenciaFXController implements Initializable {
     }
 
     private void salvaTransferencia() {
-        Transferencia acao = new Transferencia();
-        acao.setDescricao(tfDescricao.getText());
-        acao.setValor(Double.valueOf(tfValor.getText()));
-        acao.setData(dpData.getValue());
-        acao.setContaOrigem(cbOrigem.getSelectionModel().getSelectedItem());
-        acao.setContaDestino(cbDestino.getSelectionModel().getSelectedItem());
         if (cbOrigem.getSelectionModel().getSelectedItem().getId() == cbDestino.getSelectionModel().getSelectedItem().getId()) {
             alerta.getErro("Ipossível", "Ops!", "São as mesmas contas, Altere.");
+        } else if (Double.valueOf(tfValor.getText()) > cbOrigem.getSelectionModel().getSelectedItem().getSaldoInicial()) {
+            alerta.getAlert("Atenção", "Saldo insuficiente", "Não posui valor suficiente!");
         } else {
-             if (acao.getValor() > acao.getContaOrigem().getSaldoInicial()) {
-                alerta.getAlert("Atenção", "Saldo insuficiente", "Não posui valor suficiente!");
-            } else {
 
-                TransferenciaDAO dao = new TransferenciaDAO();
-                dao.inserir(acao);
+            Transferencia acao = new Transferencia();
+            acao.setDescricao(tfDescricao.getText());
+            acao.setValor(Double.valueOf(tfValor.getText()));
+            acao.setData(dpData.getValue());
+            acao.setContaOrigem(cbOrigem.getSelectionModel().getSelectedItem());
+            acao.setContaDestino(cbDestino.getSelectionModel().getSelectedItem());
 
-                ContaDAO d = new ContaDAO();
-                d.setSubtraiSaldo(acao.getValor(), acao.getContaOrigem().getId());
-                d.setSomaSaldo(acao.getValor(), acao.getContaDestino().getId());
+            TransferenciaDAO dao = new TransferenciaDAO();
+            dao.inserir(acao);
 
-                alerta.getInformacao("Sucesso", "Transação Efetuada", "Trasferido " + acao.getValor() + " da Conta " + acao.getContaOrigem().getNome() + " para " + acao.getContaDestino().getNome());
+            ContaDAO d = new ContaDAO();
+            d.setSubtraiSaldo(acao.getValor(), acao.getContaOrigem().getId());
+            d.setSomaSaldo(acao.getValor(), acao.getContaDestino().getId());
 
-                limpaCampos();
-                listarContas();
+            alerta.getInformacao("Sucesso", "Transação Efetuada", "Trasferido " + acao.getValor() + " da Conta " + acao.getContaOrigem().getNome() + " para " + acao.getContaDestino().getNome());
 
-            }
+            limpaCampos();
+            listarContas();
+
         }
     }
 

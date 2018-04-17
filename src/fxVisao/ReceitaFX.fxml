@@ -25,7 +25,7 @@
       <Pane prefHeight="88.0" prefWidth="381.0" styleClass="paneTitulo">
          <children>
             <Label layoutX="32.0" layoutY="46.0" styleClass="titulo" text="Nova receita" />
-            <Button layoutX="305.0" layoutY="45.0" mnemonicParsing="false" onAction="#registraReceita" styleClass="btSalvar" text="Salvar" />
+            <Button maxWidth="70.0" prefHeight="35.0" layoutX="305.0" layoutY="45.0" mnemonicParsing="false" onAction="#registraReceita" styleClass="btSalvar" text="Salvar" />
             <Label fx:id="lVoltar" layoutX="14.0" layoutY="-1.0" styleClass="btVoltar" text="← " />
          </children>
       </Pane>

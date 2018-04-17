@@ -52,14 +52,15 @@ public class DespesaDAO {
 
     }
 
-    public List<Despesa> getDespesasCategoria(int idUser) {
-        String sql = "SELECT it.nome as nome, sum(es.valor) as valor\n"
-                + " from  usuario as ite inner join categoria as it inner join despesa as es on it.id = es.categoria_id where ite.id = ?\n"
-                + " group by (nome)";
+    public List<Despesa> getDespesasCategoria(int idUser, LocalDate inicio, LocalDate fim) {
+        String sql = "SELECT it.nome as nome, sum(es.valor) as valor from  usuario as ite inner join categoria as it inner join despesa as es on it.id = es.categoria_id where ite.id = ? and data between ? and ? group by nome";
         try {
             List<Despesa> despesas = new ArrayList<Despesa>();
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setInt(1, idUser);
+            
+            stmt.setDate(2, Date.valueOf(inicio));
+            stmt.setDate(3, Date.valueOf(fim));
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
